@@ -1,0 +1,178 @@
+/* Match Otika template: font family and base colors — increased font sizes */
+body {
+  font-family: "Nunito", "Segoe UI", Arial, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400;
+  color: #6c757d;
+  background-color: #f6f6f6;
+}
+
+/* Sidebar and navbar: same font, larger size */
+.main-sidebar,
+.main-navbar,
+.main-content,
+.main-sidebar .sidebar-brand .logo-name,
+.main-sidebar .sidebar-menu .menu-header,
+.main-sidebar .sidebar-menu .nav-link,
+.main-navbar .nav-link {
+  font-family: inherit;
+}
+.main-sidebar .sidebar-brand .logo-name {
+  font-size: 1.25rem;
+}
+.main-sidebar .sidebar-menu .menu-header {
+  font-size: 0.8rem;
+}
+.main-sidebar .sidebar-menu .nav-link,
+.main-navbar .nav-link {
+  font-size: 1rem;
+}
+
+/* Section and card titles — increased */
+.section .section-title {
+  font-size: 1.35rem;
+}
+.section .section-header {
+  font-size: 1rem;
+}
+.card .card-header h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Headings and content — increased */
+h1, .h1 { font-size: 1.85rem; }
+h2, .h2 { font-size: 1.6rem; }
+h3, .h3 { font-size: 1.4rem; }
+h4, .h4 { font-size: 1.25rem; }
+h5, .h5 { font-size: 1.1rem; }
+h6, .h6 { font-size: 1rem; }
+.main-content .section,
+.card .card-body,
+.table {
+  font-size: 1rem;
+}
+.btn {
+  font-size: 1rem;
+}
+.form-control,
+.input-group-text {
+  font-size: 1rem;
+}
+.dropdown-menu .dropdown-item,
+.dropdown-title {
+  font-size: 1rem;
+}
+.badge {
+  font-size: 0.9rem;
+}
+.font-15 { font-size: 1rem !important; }
+.font-18 { font-size: 1.2rem !important; }
+
+/* WhatsApp-style gradient: sidebar and navbar */
+.navbar-bg {
+  background: linear-gradient(135deg, #075e54 0%, #0a6b5e 40%, #128c7e 100%) !important;
+}
+.main-navbar {
+  background: linear-gradient(135deg, #075e54 0%, #0a6b5e 40%, #128c7e 100%) !important;
+  border: none !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+.main-navbar .nav-link,
+.main-navbar .nav-link:hover,
+.main-navbar .navbar-nav .nav-link {
+  color: rgba(255,255,255,0.95) !important;
+}
+.main-navbar .nav-link:hover {
+  background-color: rgba(255,255,255,0.12) !important;
+  color: #fff !important;
+}
+.main-navbar .form-control {
+  background-color: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.3);
+  color: #fff;
+}
+.main-navbar .form-control::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+.main-navbar .btn {
+  color: rgba(255,255,255,0.95);
+}
+.main-navbar .dropdown-menu {
+  border: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+.main-navbar .dropdown-title {
+  color: #333;
+  font-weight: 600;
+}
+.main-navbar .dropdown-item {
+  color: #333;
+}
+.main-navbar .user-img-radious-style {
+  border: 2px solid rgba(255,255,255,0.6);
+}
+.main-navbar [data-feather],
+.main-navbar .nav-link svg,
+.main-navbar .fas, .main-navbar .far, .main-navbar .fab {
+  color: #fff !important;
+}
+.main-navbar svg {
+  stroke: #fff !important;
+}
+.main-navbar .fa, .main-navbar .fas, .main-navbar .far, .main-navbar .fab {
+  color: #fff !important;
+}
+
+.main-sidebar.sidebar-style-2,
+.main-sidebar {
+  background: linear-gradient(180deg, #075e54 0%, #0a6b5e 35%, #128c7e 100%) !important;
+  border-right: none !important;
+}
+.main-sidebar .sidebar-brand {
+  background: rgba(0,0,0,0.15);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.main-sidebar .sidebar-brand a {
+  color: #fff !important;
+}
+.main-sidebar .sidebar-brand .logo-name {
+  color: #fff !important;
+  font-weight: 700;
+}
+.main-sidebar .sidebar-brand .header-logo {
+  filter: brightness(0) invert(1);
+}
+.main-sidebar .sidebar-menu .menu-header {
+  color: rgba(255,255,255,0.65) !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+.main-sidebar .sidebar-menu .nav-link {
+  color: rgba(255,255,255,0.9) !important;
+}
+.main-sidebar .sidebar-menu .nav-link:hover {
+  background-color: rgba(255,255,255,0.15) !important;
+  color: #fff !important;
+}
+.main-sidebar .sidebar-menu li.active > .nav-link,
+.main-sidebar .sidebar-menu li.dropdown.active > .nav-link {
+  background-color: rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+  font-weight: 600;
+  box-shadow: inset 3px 0 0 #fff;
+}
+.main-sidebar .sidebar-menu .nav-link svg,
+.main-sidebar .sidebar-menu .nav-link [data-feather] {
+  color: inherit;
+  stroke: currentColor;
+}
+.main-sidebar #sidebar-wrapper {
+  background: transparent;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY3VzdG9tLmNzcyIsInNvdXJjZXMiOlsiY3VzdG9tLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiJ9 */
+
+/*# sourceMappingURL=custom.css.map */
