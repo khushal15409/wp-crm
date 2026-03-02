@@ -6,9 +6,8 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="{{ route('dashboard') }}">
-                <img alt="image" src="{{ asset('assets/img/logo.png') }}" class="header-logo" />
-                <span class="logo-name">WP-CRM</span>
+            <a href="{{ route('dashboard') }}" class="d-flex align-items-center justify-content-center py-3 px-2" style="width: 100%;">
+                <img alt="{{ config('app.name', 'WP-CRM') }}" src="{{ asset('front/images/logo.png') }}" class="header-logo" style="width: 100%; height: auto; max-height: 84px; object-fit: contain;" />
             </a>
         </div>
         <ul class="sidebar-menu">

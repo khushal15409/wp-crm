@@ -1,21 +1,36 @@
 /**
- * WP-CRM Landing – AOS init + nav scroll state
+ * Landify theme – front page only.
+ * Runs only when body has .landify-theme. Not loaded in backend (app.blade.php).
  */
-document.addEventListener('DOMContentLoaded', function () {
-    AOS.init({
-        duration: 600,
-        offset: 50,
-        once: true,
-        easing: 'ease-out-cubic'
-    });
+(function () {
+    'use strict';
 
-    var nav = document.querySelector('.landing-nav');
-    if (nav) {
-        function onScroll() {
-            if (window.scrollY > 20) nav.classList.add('scrolled');
-            else nav.classList.remove('scrolled');
+    function init() {
+        if (!document.body.classList.contains('landify-theme')) return;
+
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 600,
+                offset: 50,
+                once: true,
+                easing: 'ease-out-cubic'
+            });
         }
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
+
+        var nav = document.getElementById('lfNavbar');
+        if (nav) {
+            function onScroll() {
+                if (window.scrollY > 20) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        }
     }
-});
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();

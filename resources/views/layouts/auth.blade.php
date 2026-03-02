@@ -9,16 +9,23 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/auth.css') }}">
     <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}">
 </head>
-<body>
+<body class="auth-page">
     <div class="loader"></div>
     <div id="app">
-        <section class="section">
-            <div class="container mt-5">
-                @yield('content')
+        <div class="auth-wrapper">
+            <div class="auth-logo">
+                <a href="{{ url('/') }}">
+                    <img src="{{ asset('front/images/logo.png') }}" alt="{{ config('app.name', 'WP-CRM') }}">
+                </a>
             </div>
-        </section>
+            @yield('content')
+            <p class="auth-tagline">
+                WhatsApp CRM for Real Estate & Sales · <a href="{{ url('/') }}">Back to Home</a>
+            </p>
+        </div>
     </div>
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
