@@ -58,6 +58,8 @@ class Setting extends Model
             'whatsapp_access_token',
             'whatsapp_verify_token',
             'whatsapp_app_secret',
+            'razorpay_key_secret',
+            'razorpay_webhook_secret',
         ];
     }
 }

@@ -24,7 +24,7 @@ class SettingController extends Controller
             'settings.*.value' => 'nullable|string',
             'settings.*.group' => 'required|string',
         ]);
-        $keepIfEmpty = ['whatsapp_access_token', 'whatsapp_verify_token'];
+        $keepIfEmpty = ['whatsapp_access_token', 'whatsapp_verify_token', 'razorpay_key_secret', 'razorpay_webhook_secret'];
         foreach ($request->input('settings', []) as $s) {
             $value = $s['value'] ?? '';
             if (in_array($s['key'], $keepIfEmpty, true) && (string) $value === '') {

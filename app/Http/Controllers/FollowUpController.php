@@ -22,7 +22,7 @@ class FollowUpController extends Controller
             $query->where('status', $request->status);
         }
 
-        $followUps = $query->where('due_at', '>=', now()->startOfDay())->orderBy('due_at')->paginate(15);
+        $followUps = $query->where('due_at', '>=', now()->startOfDay())->orderBy('due_at')->limit(5000)->get();
         return view('follow-ups.index', compact('followUps'));
     }
 

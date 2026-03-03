@@ -10,11 +10,13 @@ use App\Http\Controllers\LeadController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\RazorpayWebhookController;
 use App\Http\Controllers\PipelineController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\SubscriptionPaymentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WhatsAppWebhookController;
 use App\Http\Controllers\WhatsAppStatusController;
@@ -38,6 +40,9 @@ Route::view('blog/follow-up-automation-sales', 'frontend.blog.blog-6');
 // WhatsApp Cloud API webhook (no auth, uses verify token from settings)
 Route::get('whatsapp/webhook', [WhatsAppWebhookController::class, 'verify']);
 Route::post('whatsapp/webhook', [WhatsAppWebhookController::class, 'handle']);
+
+// Razorpay webhook (no auth; signature verified in controller)
+Route::post('webhooks/razorpay', [RazorpayWebhookController::class, 'handle'])->name('webhooks.razorpay');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -74,6 +79,9 @@ Route::middleware(['auth', 'trial.access'])->group(function () {
     Route::get('broadcasts/{broadcast}', [BroadcastController::class, 'show'])->name('broadcasts.show');
 
     Route::get('subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
+
+    Route::post('checkout/{plan}', [SubscriptionPaymentController::class, 'checkout'])->name('checkout.create');
+    Route::post('payment/verify', [SubscriptionPaymentController::class, 'verify'])->name('payment.verify');
 
     // Organization: read-only WhatsApp status (no credentials)
     Route::get('whatsapp-status', [WhatsAppStatusController::class, 'index'])

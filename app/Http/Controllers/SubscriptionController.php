@@ -17,7 +17,7 @@ class SubscriptionController extends Controller
             $query->where('organization_id', auth()->user()->organization_id);
         }
 
-        $subscriptions = $query->latest()->paginate(15);
+        $subscriptions = $query->latest()->limit(5000)->get();
         return view('subscriptions.index', compact('subscriptions'));
     }
 }

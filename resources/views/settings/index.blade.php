@@ -91,6 +91,48 @@
                         </div>
                     </div>
 
+                    <hr class="my-4">
+                    <h5 class="mb-3">Razorpay</h5>
+                    <p class="text-muted small">Payment gateway. Key Secret and Webhook Secret are stored encrypted. Leave blank to keep existing value.</p>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <input type="hidden" name="settings[8][key]" value="razorpay_key_id">
+                            <input type="hidden" name="settings[8][group]" value="razorpay">
+                            <div class="form-group">
+                                <label>Key ID</label>
+                                <input type="text" name="settings[8][value]" class="form-control" value="{{ setting('razorpay_key_id') }}" placeholder="rzp_test_... or rzp_live_...">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <input type="hidden" name="settings[9][key]" value="razorpay_key_secret">
+                            <input type="hidden" name="settings[9][group]" value="razorpay">
+                            <div class="form-group">
+                                <label>Key Secret</label>
+                                <input type="password" name="settings[9][value]" class="form-control" value="" autocomplete="off" placeholder="Leave blank to keep">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <input type="hidden" name="settings[10][key]" value="razorpay_webhook_secret">
+                            <input type="hidden" name="settings[10][group]" value="razorpay">
+                            <div class="form-group">
+                                <label>Webhook Secret</label>
+                                <input type="password" name="settings[10][value]" class="form-control" value="" autocomplete="off" placeholder="Leave blank to keep">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <input type="hidden" name="settings[11][key]" value="razorpay_mode">
+                            <input type="hidden" name="settings[11][group]" value="razorpay">
+                            <div class="form-group">
+                                <label>Mode</label>
+                                <select name="settings[11][value]" class="form-control">
+                                    <option value="test" {{ setting('razorpay_mode') === 'test' ? 'selected' : '' }}>Test</option>
+                                    <option value="live" {{ setting('razorpay_mode') === 'live' ? 'selected' : '' }}>Live</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-muted small mt-1">Webhook URL: <code>{{ url('/webhooks/razorpay') }}</code>. Subscribe to <code>payment.captured</code> and <code>payment.failed</code>.</p>
+
                     <div class="mt-3">
                         <button type="submit" class="btn btn-primary">Save</button>
                         <form action="{{ route('settings.test-whatsapp') }}" method="POST" class="d-inline ml-2">

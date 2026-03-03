@@ -54,6 +54,11 @@ class Organization extends Model
         return $this->hasMany(Subscription::class);
     }
 
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
+
     public function whatsappAccounts(): HasMany
     {
         return $this->hasMany(WhatsappAccount::class);

@@ -11,7 +11,7 @@ class OrganizationController extends Controller
 {
     public function index(): View
     {
-        $organizations = Organization::withCount(['users', 'leads'])->latest()->paginate(15);
+        $organizations = Organization::withCount(['users', 'leads'])->latest()->limit(5000)->get();
         return view('organizations.index', compact('organizations'));
     }
 

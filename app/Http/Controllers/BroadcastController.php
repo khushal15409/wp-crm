@@ -17,7 +17,7 @@ class BroadcastController extends Controller
             $query->where('organization_id', auth()->user()->organization_id);
         }
 
-        $broadcasts = $query->latest()->paginate(15);
+        $broadcasts = $query->latest()->limit(5000)->get();
         return view('broadcasts.index', compact('broadcasts'));
     }
 

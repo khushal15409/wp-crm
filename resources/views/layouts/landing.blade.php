@@ -16,6 +16,7 @@
 
     <title>{{ $pageTitle }}</title>
     <meta name="description" content="{{ $pageDescription }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}">
 

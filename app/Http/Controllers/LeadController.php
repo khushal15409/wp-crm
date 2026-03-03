@@ -30,7 +30,7 @@ class LeadController extends Controller
             });
         }
 
-        $leads = $query->latest()->paginate(15);
+        $leads = $query->latest()->limit(5000)->get();
         return view('leads.index', compact('leads'));
     }
 

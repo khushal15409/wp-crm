@@ -13,9 +13,6 @@ class HomeController extends Controller
      */
     public function index(): View|RedirectResponse
     {
-        if (auth()->check()) {
-            return redirect()->route('dashboard');
-        }
         $activePlans = Plan::where('is_active', true)
             ->orderByDesc('is_popular')
             ->orderBy('price_monthly')
@@ -24,3 +21,4 @@ class HomeController extends Controller
         return view('welcome', compact('activePlans', 'trialDays'));
     }
 }
+

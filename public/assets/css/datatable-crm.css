@@ -1,0 +1,197 @@
+/**
+ * CRM Data Table – unified listing UI for Leads, Organizations, Plans, Subscriptions, etc.
+ */
+
+/* Card wrapper */
+.crm-datatable-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  background: #fff;
+}
+
+.crm-datatable-card .card-header {
+  background: linear-gradient(135deg, #f8fafb 0%, #f0f4f8 100%);
+  border-bottom: 1px solid #e8ecf0;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.crm-datatable-card .card-header h4 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a2332;
+  letter-spacing: -0.02em;
+}
+
+.crm-datatable-card .card-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.crm-datatable-card .card-header-form .input-group {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.crm-datatable-card .card-header-form .form-control {
+  border-radius: 0;
+  border: 1px solid #e0e4e8;
+  font-size: 0.9375rem;
+  min-width: 160px;
+}
+
+.crm-datatable-card .card-header-form .input-group-btn .btn,
+.crm-datatable-card .card-header-form .btn {
+  border-radius: 0;
+}
+
+/* Table container */
+.crm-datatable-card .table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Table base */
+.crm-datatable {
+  margin: 0;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.crm-datatable thead {
+  background: linear-gradient(180deg, #f4f6f9 0%, #eef1f5 100%);
+}
+
+.crm-datatable thead th {
+  padding: 0.875rem 1rem;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.75rem;
+  border-bottom: 2px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.crm-datatable tbody tr {
+  transition: background-color 0.15s ease;
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.crm-datatable tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.crm-datatable tbody tr:last-child {
+  border-bottom: none;
+}
+
+.crm-datatable tbody td {
+  padding: 0.875rem 1rem;
+  color: #334155;
+  vertical-align: middle;
+}
+
+.crm-datatable tbody td a:not(.btn) {
+  color: #0ea5e9;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.crm-datatable tbody td a:not(.btn):hover {
+  text-decoration: underline;
+}
+
+/* Pills / badges */
+.crm-badge {
+  display: inline-block;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  text-transform: capitalize;
+}
+
+.crm-badge--success { background: #dcfce7; color: #166534; }
+.crm-badge--warning { background: #fef3c7; color: #92400e; }
+.crm-badge--danger  { background: #fee2e2; color: #991b1b; }
+.crm-badge--info    { background: #dbeafe; color: #1e40af; }
+.crm-badge--secondary { background: #f1f5f9; color: #475569; }
+
+/* Action buttons */
+.crm-btn-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.crm-datatable .btn {
+  font-size: 0.8125rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.crm-datatable .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.crm-datatable .btn-sm {
+  padding: 0.3rem 0.55rem;
+  font-size: 0.8125rem;
+}
+
+/* Card footer pagination */
+.crm-datatable-card .card-footer {
+  background: #fafbfc;
+  border-top: 1px solid #e8ecf0;
+  padding: 0.75rem 1.5rem;
+}
+
+.crm-datatable-card .card-footer .pagination {
+  margin: 0;
+}
+
+/* Empty state */
+.crm-datatable-empty {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: #64748b;
+  font-size: 0.9375rem;
+}
+
+.crm-datatable-empty .crm-datatable-empty-icon {
+  font-size: 2.5rem;
+  color: #cbd5e1;
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .crm-datatable-card .card-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .crm-datatable-card .card-header-actions {
+    justify-content: flex-start;
+  }
+  .crm-datatable thead th,
+  .crm-datatable tbody td {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.875rem;
+  }
+}

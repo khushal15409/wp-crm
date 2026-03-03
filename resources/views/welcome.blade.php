@@ -455,7 +455,11 @@
                         <ul class="feature-list list-unstyled mb-4"><li><i class="bi bi-check-circle"></i> All features included</li></ul>
                         @endif
                         <div class="cta">
+                            @auth
+                            <button type="button" class="btn btn-choose btn-choose-paid w-100 btn-razorpay-checkout" data-plan-id="{{ $plan->id }}" data-plan-name="{{ $plan->name }}">Buy Now</button>
+                            @else
                             <a href="{{ route('register', ['plan_id' => $plan->id]) }}" class="btn btn-choose btn-choose-paid w-100">Choose Plan</a>
+                            @endauth
                         </div>
                     </article>
                 </div>
@@ -556,4 +560,76 @@
             <p class="text-center mt-4 mb-0">Still have questions? <a href="{{ route('register') }}">Get started free</a> or reach out to our support.</p>
         </div>
     </section>
+
+    @auth
+    @push('scripts')
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var csrfToken = document.querySelector('meta[name="csrf-token"]') && document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        var verifyUrl = '{{ url("/payment/verify") }}';
+        document.querySelectorAll('.btn-razorpay-checkout').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var planId = this.getAttribute('data-plan-id');
+                var planName = this.getAttribute('data-plan-name') || 'Plan';
+                if (!planId || !csrfToken) return;
+                btn.disabled = true;
+                fetch('{{ url("/checkout") }}/' + planId, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: JSON.stringify({}),
+                    credentials: 'same-origin'
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    btn.disabled = false;
+                    if (data.order_id && data.key_id && data.amount !== undefined) {
+                        var options = {
+                            key: data.key_id,
+                            amount: data.amount,
+                            currency: data.currency || 'INR',
+                            order_id: data.order_id,
+                            name: '{{ config("app.name") }}',
+                            description: planName + ' subscription',
+                            handler: function(response) {
+                                fetch(verifyUrl, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'Accept': 'application/json',
+                                        'X-CSRF-TOKEN': csrfToken,
+                                        'X-Requested-With': 'XMLHttpRequest'
+                                    },
+                                    body: JSON.stringify({
+                                        razorpay_order_id: response.razorpay_order_id,
+                                        razorpay_payment_id: response.razorpay_payment_id,
+                                        razorpay_signature: response.razorpay_signature,
+                                        plan_id: parseInt(planId, 10)
+                                    }),
+                                    credentials: 'same-origin'
+                                }).then(function(res) { return res.json(); }).then(function(result) {
+                                    if (result.redirect) window.location.href = result.redirect;
+                                    else if (result.message) alert(result.message);
+                                }).catch(function() { alert('Verification failed. Please contact support.'); });
+                            }
+                        };
+                        var rzp = new Razorpay(options);
+                        rzp.on('payment.failed', function() { btn.disabled = false; });
+                        rzp.open();
+                    } else {
+                        alert(data.message || 'Could not start checkout.');
+                    }
+                }).catch(function() {
+                    btn.disabled = false;
+                    alert('Could not create order. Try again or contact support.');
+                });
+            });
+        });
+    });
+    </script>
+    @endpush
+    @endauth
 @endsection

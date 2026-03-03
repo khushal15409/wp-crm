@@ -17,7 +17,7 @@ class UserController extends Controller
         if (auth()->user()->hasRole('organization')) {
             $query->where('organization_id', auth()->user()->organization_id);
         }
-        $users = $query->latest()->paginate(15);
+        $users = $query->latest()->limit(5000)->get();
         return view('users.index', compact('users'));
     }
 
