@@ -21,21 +21,24 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <div class="form-group">
-                <label for="name">Name</label>
+                <label for="organization_name">Organization Name</label>
+                <input id="organization_name" type="text" class="form-control" name="organization_name" value="{{ old('organization_name') }}" placeholder="Your company or brand name" required>
+            </div>
+            <div class="form-group">
+                <label for="business_type">Business Type <span class="text-muted">(optional)</span></label>
+                <input id="business_type" type="text" class="form-control" name="business_type" value="{{ old('business_type') }}" placeholder="e.g. Real Estate, Agency, Coaching">
+            </div>
+            <div class="form-group">
+                <label for="whatsapp_number">WhatsApp Business Number (with country code)</label>
+                <input id="whatsapp_number" type="text" class="form-control" name="whatsapp_number" value="{{ old('whatsapp_number') }}" placeholder="+91 98765 43210" required>
+            </div>
+            <div class="form-group">
+                <label for="name">User Full Name</label>
                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Your full name" required>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="your@email.com" required>
-            </div>
-            <div class="form-group">
-                <label for="organization_id">Organization</label>
-                <select id="organization_id" name="organization_id" class="form-control" required>
-                    <option value="">Select organization</option>
-                    @foreach($organizations as $org)
-                        <option value="{{ $org->id }}" {{ old('organization_id') == $org->id ? 'selected' : '' }}>{{ $org->name }}</option>
-                    @endforeach
-                </select>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>

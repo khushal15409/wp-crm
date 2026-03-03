@@ -156,8 +156,12 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 36px;
+  max-height: 56px;
+  height: auto;
+  width: auto;
+  max-width: 220px;
   margin-right: 8px;
+  object-fit: contain;
 }
 
 .header .logo h1 {
@@ -793,12 +797,27 @@ section,
   }
 }
 
+/* Get Started Free button blink */
+@keyframes btn-get-started-blink {
+  0%, 100% {
+    background: var(--accent-color);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--accent-color), transparent 70%);
+  }
+  50% {
+    background: color-mix(in srgb, var(--accent-color), white 18%);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--accent-color), transparent 40%),
+                0 0 40px color-mix(in srgb, var(--accent-color), transparent 60%),
+                0 6px 20px color-mix(in srgb, var(--accent-color), transparent 50%);
+  }
+}
+
 .hero .hero-content .hero-actions .btn-primary {
   background: var(--accent-color);
   color: var(--contrast-color);
   padding: 16px 32px;
   border-radius: 6px;
   font-weight: 400;
+  animation: btn-get-started-blink 1s ease-in-out infinite;
   font-size: 1rem;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -809,6 +828,7 @@ section,
   background: color-mix(in srgb, var(--accent-color), black 10%);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px color-mix(in srgb, var(--accent-color), transparent 70%);
+  animation-duration: 0.9s;
 }
 
 .hero .hero-content .hero-actions .btn-secondary {
@@ -2141,6 +2161,7 @@ section,
   padding: 15px 30px;
   border-radius: 12px;
   font-weight: 600;
+  animation: btn-get-started-blink 1s ease-in-out infinite;
   font-size: 1rem;
   text-decoration: none;
   display: inline-flex;
@@ -2155,6 +2176,7 @@ section,
   transform: translateY(-3px);
   box-shadow: 0 12px 30px color-mix(in srgb, var(--accent-color), transparent 60%);
   color: var(--contrast-color);
+  animation-duration: 0.9s;
 }
 
 .call-to-action .btn-cta:focus {
@@ -3030,6 +3052,207 @@ section,
   font-weight: 600;
 }
 
+/* Free Trial card: full-card blink, faster and more visible */
+@keyframes free-trial-blink {
+  0%, 100% {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color), transparent 94%) 0%, var(--surface-color) 50%);
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--default-color), transparent 92%);
+    border-color: var(--accent-soft);
+  }
+  50% {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color), transparent 78%) 0%, color-mix(in srgb, var(--accent-color), transparent 90%) 45%, color-mix(in srgb, var(--accent-color), transparent 96%) 100%);
+    box-shadow: 0 12px 40px color-mix(in srgb, var(--accent-color), transparent 65%),
+                0 0 0 2px color-mix(in srgb, var(--accent-color), transparent 60%);
+    border-color: color-mix(in srgb, var(--accent-color), transparent 45%);
+  }
+}
+
+.pricing .price-card-free-trial {
+  padding: 14px 24px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color), transparent 94%) 0%, var(--surface-color) 50%);
+  border: 1px dashed var(--accent-soft);
+  border-radius: var(--card-radius);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--default-color), transparent 92%);
+  animation: free-trial-blink 1.25s ease-in-out infinite;
+}
+
+.pricing .price-card-free-trial:hover {
+  transform: none;
+  animation-duration: 1s;
+}
+
+.pricing .price-card-free-trial .card-head {
+  margin-bottom: 12px;
+}
+
+.pricing .price-card-free-trial .card-head .title {
+  font-size: 1.125rem;
+  margin: 0 0 2px;
+}
+
+.pricing .price-card-free-trial .card-head .subtitle {
+  font-size: 0.8125rem;
+  margin: 0;
+}
+
+.pricing .price-card-free-trial .free-trial-under {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
+
+.pricing .price-card-free-trial .free-trial-under .feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 20px;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.pricing .price-card-free-trial .free-trial-under .feature-list li {
+  padding: 2px 0;
+  font-size: 0.8125rem;
+}
+
+.pricing .price-card-free-trial .free-trial-under .feature-list li i {
+  font-size: 14px;
+  margin-right: 6px;
+}
+
+.pricing .price-card-free-trial .free-trial-under .cta {
+  margin-top: 0;
+  margin-left: auto;
+  text-align: right;
+}
+
+.pricing .price-card-free-trial .free-trial-note {
+  font-size: 0.6875rem;
+  color: var(--muted);
+  margin: 8px 0 0;
+  display: block;
+}
+
+/* Paid plan cards: large price, updated design */
+.pricing .paid-plans-row .price-card .price-wrap .price.price-monthly,
+.pricing .paid-plans-row .price-card .price-wrap .price.price-yearly {
+  display: inline-flex;
+}
+
+.pricing .price-card-paid .card-head {
+  margin-bottom: 16px;
+}
+
+.pricing .price-card-paid .card-head .price-wrap.price-wrap-paid {
+  margin-bottom: 12px;
+}
+
+.pricing .price-card-paid .card-head .price-wrap .price.price-monthly {
+  font-size: 52px;
+  line-height: 1.1;
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2px 0;
+}
+
+.pricing .price-card-paid .card-head .price-wrap .price .price-currency {
+  font-size: 28px;
+  font-weight: 700;
+  margin-right: 4px;
+  vertical-align: baseline;
+  line-height: 1;
+}
+
+.pricing .price-card-paid .card-head .price-wrap .price .price-value {
+  font-variant-numeric: tabular-nums;
+}
+
+.pricing .price-card-paid .card-head .price-wrap .price .period {
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+.pricing .price-card-paid .card-head .title {
+  font-size: 1rem;
+  margin: 0 0 4px;
+}
+
+.pricing .price-card-paid .card-head .subtitle {
+  font-size: 0.8125rem;
+  margin: 0 0 0;
+}
+
+.pricing .price-card-paid .feature-list {
+  padding-top: 14px;
+}
+
+.pricing .price-card-paid .feature-list li {
+  padding: 6px 0;
+  font-size: 0.875rem;
+}
+
+.pricing .price-card-paid .cta .btn-choose-paid {
+  font-weight: 700;
+  padding: 12px 20px;
+  font-size: 1rem;
+}
+
+@media (max-width: 992px) {
+  .pricing .price-card-free-trial .free-trial-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .pricing .price-card-free-trial .cta {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .pricing .price-card-free-trial .cta .btn-choose {
+    width: 100%;
+  }
+
+  .pricing .price-card-paid .card-head .price-wrap .price.price-monthly {
+    font-size: 44px;
+  }
+
+  .pricing .price-card-paid .card-head .price-wrap .price .price-currency {
+    font-size: 24px;
+  }
+
+  .pricing .price-card-free-trial .free-trial-under {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .pricing .price-card-free-trial .free-trial-under .cta {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .pricing .price-card-free-trial .free-trial-under .cta .btn-choose {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .pricing .price-card-free-trial {
+    padding: 12px 16px;
+  }
+
+  .pricing .price-card-free-trial .feature-list {
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
 .pricing .price-card .feature-list {
   border-top: 1px dashed var(--line);
   padding-top: 16px;
@@ -3305,6 +3528,64 @@ section,
 
 .contact .contact-form .btn-submit:active {
   transform: translateY(0);
+}
+
+/* FAQ Section (Have Questions? Let's Talk.) */
+.faq-section.faq-section .section-title p {
+  color: var(--muted, color-mix(in srgb, var(--default-color), transparent 35%));
+}
+
+.faq-accordion .accordion-item {
+  background: var(--surface-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px color-mix(in srgb, var(--default-color), transparent 96%);
+}
+
+.faq-accordion .accordion-item:last-child {
+  margin-bottom: 0;
+}
+
+.faq-accordion .accordion-button {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--heading-color);
+  background: var(--surface-color);
+  padding: 1rem 1.25rem;
+  border: none;
+  box-shadow: none;
+}
+
+.faq-accordion .accordion-button:not(.collapsed) {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+}
+
+.faq-accordion .accordion-button:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.faq-accordion .accordion-button::after {
+  filter: none;
+}
+
+.faq-accordion .accordion-body {
+  padding: 0 1.25rem 1.25rem;
+  color: var(--default-color);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.faq-accordion .accordion-body a {
+  color: var(--accent-color);
+  font-weight: 500;
+}
+
+.faq-accordion .accordion-body a:hover {
+  text-decoration: underline;
 }
 
 /*--------------------------------------------------------------

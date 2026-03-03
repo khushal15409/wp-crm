@@ -46,12 +46,6 @@
                 <a href="{{ route('broadcasts.index') }}" class="nav-link"><i data-feather="send"></i><span>Broadcasts</span></a>
             </li>
 
-            @if($isSuperAdmin)
-            <li class="dropdown {{ request()->routeIs('whatsapp-settings.*') ? 'active' : '' }}">
-                <a href="{{ route('whatsapp-settings.index') }}" class="nav-link"><i data-feather="message-circle"></i><span>WhatsApp Settings</span></a>
-            </li>
-            @endif
-
             @if($isOrganization)
             <li class="dropdown {{ request()->routeIs('whatsapp-status.*') ? 'active' : '' }}">
                 <a href="{{ route('whatsapp-status.index') }}" class="nav-link"><i data-feather="message-circle"></i><span>WhatsApp Status</span></a>

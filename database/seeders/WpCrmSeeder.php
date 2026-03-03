@@ -4,6 +4,11 @@ namespace Database\Seeders;
 
 use App\Models\Organization;
 use App\Models\Plan;
+use App\Models\Lead;
+use App\Models\FollowUp;
+use App\Models\Broadcast;
+use App\Models\Setting;
+use App\Models\WhatsappAccount;
 use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -81,6 +86,73 @@ class WpCrmSeeder extends Seeder
                     'status' => 'active',
                 ]
             );
+
+            // Seed a WhatsappAccount per organization (dummy data)
+            WhatsappAccount::firstOrCreate(
+                ['organization_id' => $org->id],
+                [
+                    'phone_number' => '+910000000' . $org->id,
+                    'account_id' => 'WA-ACC-' . $org->slug,
+                    'status' => 'connected',
+                ]
+            );
+
+            // Seed some leads for each organization
+            for ($i = 1; $i <= 5; $i++) {
+                $lead = Lead::firstOrCreate(
+                    [
+                        'organization_id' => $org->id,
+                        'phone' => '+910000' . $org->id . sprintf('%03d', $i),
+                    ],
+                    [
+                        'name' => 'Lead ' . $i . ' - ' . $org->name,
+                        'email' => 'lead' . $i . '@' . $org->slug . '.test',
+                        'source' => 'whatsapp',
+                        'stage' => $i === 1 ? 'new' : 'contacted',
+                        'notes' => 'Demo lead seeded for ' . $org->name,
+                    ]
+                );
+
+                // One follow-up per lead, assigned to the org user
+                $orgUser = $org->users()->first();
+                if ($orgUser) {
+                    FollowUp::firstOrCreate(
+                        [
+                            'organization_id' => $org->id,
+                            'lead_id' => $lead->id,
+                            'user_id' => $orgUser->id,
+                        ],
+                        [
+                            'due_at' => now()->addDays($i),
+                            'status' => 'pending',
+                            'notes' => 'Follow up with ' . ($lead->name ?? $lead->phone),
+                        ]
+                    );
+                }
+            }
+
+            // Seed a sample broadcast per organization
+            Broadcast::firstOrCreate(
+                [
+                    'organization_id' => $org->id,
+                    'name' => 'Welcome Campaign',
+                ],
+                [
+                    'message' => 'Welcome to WP-CRM demo broadcast for ' . $org->name . '.',
+                    'status' => 'draft',
+                    'scheduled_at' => now()->addDay(),
+                    'sent_at' => null,
+                    'recipients_count' => 0,
+                ]
+            );
         }
+
+        // Seed basic system settings (safe dummy values)
+        Setting::set('app_name', 'WP-CRM Demo', 'app');
+        Setting::set('support_email', 'support@wp-crm.test', 'app');
+        Setting::set('whatsapp_base_url', 'https://graph.facebook.com/v21.0', 'whatsapp');
+        Setting::set('whatsapp_phone_number_id', '1234567890', 'whatsapp');
+        Setting::set('whatsapp_business_account_id', '987654321', 'whatsapp');
+        // do not set real tokens here; leave empty for manual configuration
     }
 }

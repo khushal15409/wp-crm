@@ -5,10 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>@yield('meta_title', config('app.name', 'WP-CRM'))</title>
-    <meta name="description" content="@yield('meta_description', 'WhatsApp CRM for Real Estate & Sales.')">
-    <link rel="canonical" href="{{ url()->current() }}">
+    @php
+        $defaultTitle = 'WhatsApp CRM for Real Estate & Sales | WhatsAppLeadCRM';
+        $defaultDescription = 'WhatsApp CRM for real estate and sales teams. Manage WhatsApp leads, pipeline, and follow-ups in one simple WhatsApp sales CRM built for faster conversions.';
+        $pageTitle = trim($__env->yieldContent('meta_title')) ?: $defaultTitle;
+        $pageDescription = trim($__env->yieldContent('meta_description')) ?: $defaultDescription;
+        $canonicalUrl = url()->current();
+        $socialImage = asset('front/images/landify/illustration/illustration-15.webp');
+    @endphp
+
+    <title>{{ $pageTitle }}</title>
+    <meta name="description" content="{{ $pageDescription }}">
+    <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="{{ $pageTitle }}">
+    <meta property="og:description" content="{{ $pageDescription }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
+    <meta property="og:image" content="{{ $socialImage }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $pageTitle }}">
+    <meta name="twitter:description" content="{{ $pageDescription }}">
+    <meta name="twitter:image" content="{{ $socialImage }}">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "WhatsAppLeadCRM",
+          "url": "{{ url('/') }}",
+          "logo": "{{ asset('front/images/logo.png') }}",
+          "description": "{{ $pageDescription }}"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "WhatsAppLeadCRM",
+          "url": "{{ url('/') }}",
+          "applicationCategory": "CRM Application",
+          "operatingSystem": "Web",
+          "description": "{{ $pageDescription }}",
+          "offers": {
+            "@type": "Offer",
+            "price": "299",
+            "priceCurrency": "INR"
+          }
+        },
+        {
+          "@type": "Product",
+          "@id": "{{ url('/') }}#saas",
+          "name": "WhatsApp CRM for Real Estate & Sales",
+          "url": "{{ url('/') }}",
+          "description": "{{ $pageDescription }}",
+          "category": "SaaSProduct",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "INR",
+            "price": "299",
+            "priceValidUntil": "{{ now()->addYear()->toDateString() }}",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    }
+    </script>
 
     <!-- Fonts (Landify) -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -31,8 +97,8 @@
 
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container position-relative d-flex align-items-center justify-content-between">
-            <a href="{{ url('/') }}" class="logo d-flex align-items-center me-auto me-xl-0" style="max-width: 180px;">
-                <img src="{{ asset('front/images/logo.png') }}" alt="{{ config('app.name', 'WP-CRM') }}" style="width: 100%; height: auto; max-height: 78px; object-fit: contain;">
+            <a href="{{ url('/') }}" class="logo d-flex align-items-center me-auto me-xl-0" style="max-width: 240px;">
+                <img src="{{ asset('front/images/logo.png') }}" alt="{{ config('app.name', 'WP-CRM') }}" style="width: auto; height: 52px; max-height: 56px; object-fit: contain;">
             </a>
 
             <nav id="navmenu" class="navmenu">
@@ -41,7 +107,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#contact">FAQ</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
@@ -62,8 +128,8 @@
         <div class="container footer-top">
             <div class="row gy-4">
                 <div class="col-lg-5 col-md-12 footer-about">
-                    <a href="{{ url('/') }}" class="logo d-flex align-items-center" style="max-width: 200px;">
-                        <img src="{{ asset('front/images/logo.png') }}" alt="{{ config('app.name', 'WP-CRM') }}" style="width: 100%; height: auto; max-height: 84px; object-fit: contain;">
+                    <a href="{{ url('/') }}" class="logo d-flex align-items-center" style="max-width: 260px;">
+                        <img src="{{ asset('front/images/logo.png') }}" alt="{{ config('app.name', 'WP-CRM') }}" style="width: auto; height: 64px; max-height: 72px; object-fit: contain;">
                     </a>
                     <p>WhatsApp CRM for Real Estate & Sales. Manage leads, pipelines, and follow-ups in one place.</p>
                     <div class="social-links d-flex mt-4">
@@ -79,7 +145,7 @@
                         <li><a href="#hero">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#features">Features</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#contact">FAQ</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-6 footer-links">
@@ -103,14 +169,14 @@
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs@1.2.2/dist/purecounter_vanilla.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs@1.5.0/dist/purecounter.js" crossorigin="anonymous" defer></script>
 
     <!-- Landify theme JS -->
-    <script src="{{ asset('front/js/landify.js') }}"></script>
+    <script src="{{ asset('front/js/landify.js') }}" defer></script>
 
     @stack('scripts')
 </body>

@@ -16,11 +16,19 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\WhatsAppSettingController;
+use App\Http\Controllers\WhatsAppWebhookController;
 use App\Http\Controllers\WhatsAppStatusController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/sitemap.xml', function () {
+    return response()->view('sitemap')->header('Content-Type', 'application/xml');
+})->name('sitemap');
+
+// WhatsApp Cloud API webhook (no auth, uses verify token from settings)
+Route::get('whatsapp/webhook', [WhatsAppWebhookController::class, 'verify']);
+Route::post('whatsapp/webhook', [WhatsAppWebhookController::class, 'handle']);
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -31,7 +39,7 @@ Route::middleware('guest')->group(function () {
 
 Route::post('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'trial.access'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -64,13 +72,11 @@ Route::middleware('auth')->group(function () {
         ->middleware('role:organization');
 
     Route::middleware('super_admin')->group(function () {
-        Route::resource('whatsapp-settings', WhatsAppSettingController::class);
-        Route::post('whatsapp-settings/{whatsapp_setting}/test', [WhatsAppSettingController::class, 'testConnection'])
-            ->name('whatsapp-settings.test');
         Route::resource('organizations', OrganizationController::class);
         Route::resource('plans', PlanController::class)->except(['show', 'destroy']);
         Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
         Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
+        Route::post('settings/test-whatsapp', [SettingController::class, 'testWhatsApp'])->name('settings.test-whatsapp');
         Route::get('users', [UserController::class, 'index'])->name('users.index');
         Route::get('users/create', [UserController::class, 'create'])->name('users.create');
         Route::post('users', [UserController::class, 'store'])->name('users.store');

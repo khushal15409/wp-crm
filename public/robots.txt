@@ -1,2 +1,20 @@
 User-agent: *
-Disallow:
+
+# Allow public marketing pages
+Allow: /
+
+# Block app/dashboard and admin areas from indexing
+Disallow: /dashboard
+Disallow: /leads
+Disallow: /follow-ups
+Disallow: /broadcasts
+Disallow: /pipeline
+Disallow: /subscriptions
+Disallow: /organizations
+Disallow: /plans
+Disallow: /settings
+Disallow: /users
+Disallow: /roles
+Disallow: /permissions
+Disallow: /whatsapp-status
+Disallow: /whatsapp/webhook

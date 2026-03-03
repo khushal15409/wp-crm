@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\WhatsAppSetting;
+use App\Services\WhatsAppService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -10,10 +11,11 @@ use Illuminate\View\View;
 
 class WhatsAppSettingController extends Controller
 {
-    public function index(): View
+    public function index(WhatsAppService $whatsApp): View
     {
         $settings = WhatsAppSetting::latest()->get();
-        return view('whatsapp-settings.index', compact('settings'));
+        $connectionStatus = $whatsApp->testConnection();
+        return view('whatsapp-settings.index', compact('settings', 'connectionStatus'));
     }
 
     public function create(): View
@@ -87,19 +89,12 @@ class WhatsAppSettingController extends Controller
     /**
      * Test connection using Meta Graph API (no credentials sent to frontend).
      */
-    public function testConnection(WhatsAppSetting $whatsappSetting): RedirectResponse
+    public function testConnection(WhatsAppSetting $whatsappSetting, WhatsAppService $whatsApp): RedirectResponse
     {
-        $token = $whatsappSetting->getRawOriginal('access_token');
-        $phoneId = $whatsappSetting->phone_number_id;
-        if (! $token || ! $phoneId) {
-            return redirect()->back()->with('error', 'Access token and Phone Number ID are required to test.');
-        }
-        $url = "https://graph.facebook.com/v18.0/{$phoneId}";
-        $response = Http::withToken($token)->get($url);
-        if ($response->successful()) {
-            return redirect()->back()->with('success', 'Connection test successful.');
-        }
-        $message = $response->json('error.message') ?? $response->body() ?? 'Connection failed.';
-        return redirect()->back()->with('error', 'Connection test failed: ' . $message);
+        $result = $whatsApp->testConnection();
+
+        return redirect()
+            ->back()
+            ->with($result['ok'] ? 'success' : 'error', $result['message']);
     }
 }
