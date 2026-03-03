@@ -35,37 +35,37 @@
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@@context": "https://schema.org",
+      "@@graph": [
         {
-          "@type": "Organization",
+          "@@type": "Organization",
           "name": "WhatsAppLeadCRM",
           "url": "{{ url('/') }}",
           "logo": "{{ asset('front/images/logo.png') }}",
           "description": "{{ $pageDescription }}"
         },
         {
-          "@type": "SoftwareApplication",
+          "@@type": "SoftwareApplication",
           "name": "WhatsAppLeadCRM",
           "url": "{{ url('/') }}",
           "applicationCategory": "CRM Application",
           "operatingSystem": "Web",
           "description": "{{ $pageDescription }}",
           "offers": {
-            "@type": "Offer",
+            "@@type": "Offer",
             "price": "299",
             "priceCurrency": "INR"
           }
         },
         {
-          "@type": "Product",
-          "@id": "{{ url('/') }}#saas",
+          "@@type": "Product",
+          "@@id": "{{ url('/') }}#saas",
           "name": "WhatsApp CRM for Real Estate & Sales",
           "url": "{{ url('/') }}",
           "description": "{{ $pageDescription }}",
           "category": "SaaSProduct",
           "offers": {
-            "@type": "Offer",
+            "@@type": "Offer",
             "priceCurrency": "INR",
             "price": "299",
             "priceValidUntil": "{{ now()->addYear()->toDateString() }}",
@@ -103,20 +103,21 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#contact">FAQ</a></li>
+                    <li><a href="{{ request()->is('/') ? '#hero' : url('/').'#hero' }}" class="{{ request()->is('/') ? 'active' : '' }}">Home</a></li>
+                    <li><a href="{{ request()->is('/') ? '#about' : url('/').'#about' }}">About</a></li>
+                    <li><a href="{{ request()->is('/') ? '#features' : url('/').'#features' }}">Features</a></li>
+                    <li><a href="{{ request()->is('/') ? '#pricing' : url('/').'#pricing' }}">Pricing</a></li>
+                    <li><a href="{{ url('/blog') }}" class="{{ request()->is('blog*') ? 'active' : '' }}">Blog</a></li>
+                    <li><a href="{{ request()->is('/') ? '#contact' : url('/').'#contact' }}">FAQ</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-            @auth
+            @if(auth()->check())
                 <a class="btn-getstarted" href="{{ route('dashboard') }}">Dashboard</a>
             @else
                 <a class="btn-getstarted" href="{{ route('login') }}">Log in</a>
-            @endauth
+            @endif
         </div>
     </header>
 
@@ -142,10 +143,11 @@
                 <div class="col-lg-2 col-6 footer-links">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#hero">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#contact">FAQ</a></li>
+                        <li><a href="{{ url('/') }}">Home</a></li>
+                        <li><a href="{{ url('/') }}#about">About</a></li>
+                        <li><a href="{{ url('/') }}#features">Features</a></li>
+                        <li><a href="{{ url('/blog') }}">Blog</a></li>
+                        <li><a href="{{ url('/') }}#contact">FAQ</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-6 footer-links">

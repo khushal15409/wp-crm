@@ -26,6 +26,15 @@ Route::get('/sitemap.xml', function () {
     return response()->view('sitemap')->header('Content-Type', 'application/xml');
 })->name('sitemap');
 
+// Static blog (frontend-only, no database)
+Route::view('blog', 'frontend.blog.index');
+Route::view('blog/real-estate-whatsapp-leads', 'frontend.blog.blog-1');
+Route::view('blog/what-is-whatsapp-crm', 'frontend.blog.blog-2');
+Route::view('blog/whatsapp-crm-vs-excel', 'frontend.blog.blog-3');
+Route::view('blog/convert-whatsapp-leads', 'frontend.blog.blog-4');
+Route::view('blog/best-whatsapp-crm-india', 'frontend.blog.blog-5');
+Route::view('blog/follow-up-automation-sales', 'frontend.blog.blog-6');
+
 // WhatsApp Cloud API webhook (no auth, uses verify token from settings)
 Route::get('whatsapp/webhook', [WhatsAppWebhookController::class, 'verify']);
 Route::post('whatsapp/webhook', [WhatsAppWebhookController::class, 'handle']);
