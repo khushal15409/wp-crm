@@ -33,9 +33,19 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'plan_id' => ['nullable', 'integer', 'exists:plans,id'],
         ]);
 
         $user = DB::transaction(function () use ($request) {
+            $plan = null;
+            if ($request->filled('plan_id')) {
+                $plan = Plan::where('id', $request->plan_id)->where('is_active', true)->first();
+            }
+            if (! $plan) {
+                $plan = Plan::where('slug', 'basic')->orWhere('slug', 'trial')->first() ?? Plan::where('is_active', true)->first();
+            }
+            $trialDays = $plan ? (int) ($plan->trial_days ?? 7) : 7;
+
             $slugBase = Str::slug($request->organization_name);
             $slug = $slugBase;
             $suffix = 1;
@@ -51,19 +61,17 @@ class RegisterController extends Controller
                 'business_type' => $request->business_type,
                 'is_active' => true,
                 'is_trial' => true,
-                'trial_ends_at' => now()->addDays(7),
+                'trial_ends_at' => now()->addDays($trialDays),
             ]);
-
-            $plan = Plan::where('slug', 'basic')
-                ->orWhere('slug', 'trial')
-                ->first() ?? Plan::first();
 
             if ($plan) {
                 Subscription::create([
                     'organization_id' => $organization->id,
                     'plan_id' => $plan->id,
+                    'price_at_purchase' => null,
                     'starts_at' => now(),
-                    'ends_at' => now()->addDays(7),
+                    'ends_at' => now()->addDays($trialDays),
+                    'trial_ends_at' => now()->addDays($trialDays),
                     'status' => 'trial',
                 ]);
             }

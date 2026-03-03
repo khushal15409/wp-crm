@@ -13,14 +13,17 @@ class Subscription extends Model
     protected $fillable = [
         'organization_id',
         'plan_id',
+        'price_at_purchase',
         'starts_at',
         'ends_at',
+        'trial_ends_at',
         'status',
     ];
 
     protected $casts = [
         'starts_at' => 'datetime',
         'ends_at' => 'datetime',
+        'trial_ends_at' => 'datetime',
     ];
 
     public function organization(): BelongsTo

@@ -398,19 +398,19 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
+    <!-- Pricing Section (dynamic from Plan Management) -->
     <section id="pricing" class="pricing section">
         <div class="container section-title" data-aos="fade-up">
             <span class="description-title">Pricing</span>
             <h2>Simple Pricing for Teams of All Sizes</h2>
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <!-- Free Trial Card (full width, compact unique design) -->
+            <!-- Free Trial Banner (single card; trial days from plans) -->
             <div class="row gy-4 justify-content-center mb-0">
                 <div class="col-12" data-aos="fade-up" data-aos-delay="150">
                     <article class="price-card price-card-free-trial">
                         <div class="card-head">
-                            <h3 class="title">Start Free for 7 Days</h3>
+                            <h3 class="title">Start Free for {{ $trialDays }} Days</h3>
                             <p class="subtitle">Try WP-CRM with full features before you pay anything.</p>
                         </div>
                         <div class="free-trial-under">
@@ -428,74 +428,40 @@
                     </article>
                 </div>
             </div>
-            <!-- Paid Monthly Plans -->
+            <!-- Paid Plans (from database; only active) -->
+            @if(isset($activePlans) && $activePlans->isNotEmpty())
             <div class="row gy-4 justify-content-center mt-4 paid-plans-row">
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <article class="price-card price-card-paid h-100">
-                        <div class="card-head">
-                            <span class="badge-title">Starter</span>
-                            <div class="price-wrap price-wrap-paid">
-                                <span class="price price-monthly"><span class="price-currency">₹</span><span class="price-value">299</span><span class="period">/month</span></span>
-                            </div>
-                            <h3 class="title">Best for solo professionals getting started with WhatsApp leads.</h3>
-                            <p class="subtitle">Get started with the essentials.</p>
-                        </div>
-                        <ul class="feature-list list-unstyled mb-4">
-                            <li><i class="bi bi-check-circle"></i> CRM inbox &amp; pipeline</li>
-                            <li><i class="bi bi-check-circle"></i> Follow-up reminders</li>
-                            <li><i class="bi bi-check-circle"></i> Notes &amp; activity history</li>
-                            <li><i class="bi bi-check-circle"></i> Email support</li>
-                        </ul>
-                        <div class="cta">
-                            <a href="{{ route('register') }}" class="btn btn-choose btn-choose-paid w-100">Choose Plan</a>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="250">
-                    <article class="price-card price-card-paid featured h-100 position-relative">
+                @foreach($activePlans as $index => $plan)
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="{{ 200 + ($index * 50) }}">
+                    <article class="price-card price-card-paid {{ $plan->is_popular ? 'featured' : '' }} h-100 position-relative">
+                        @if($plan->is_popular)
                         <div class="ribbon"><i class="bi bi-star-fill"></i> Most Popular</div>
+                        @endif
                         <div class="card-head">
-                            <span class="badge-title">Pro</span>
+                            <span class="badge-title">{{ $plan->name }}</span>
                             <div class="price-wrap price-wrap-paid">
-                                <span class="price price-monthly"><span class="price-currency">₹</span><span class="price-value">599</span><span class="period">/month</span></span>
+                                <span class="price price-monthly"><span class="price-currency">₹</span><span class="price-value">{{ $plan->getPriceMonthlyInr() }}</span><span class="period">/month</span></span>
                             </div>
-                            <h3 class="title">Ideal for active sales agents and service-based teams.</h3>
-                            <p class="subtitle">More power, more results.</p>
+                            <h3 class="title">{{ $plan->description ?? '—' }}</h3>
+                            <p class="subtitle">{{ $plan->description ? Str::limit($plan->description, 60) : '—' }}</p>
                         </div>
+                        @if(is_array($plan->features) && count($plan->features) > 0)
                         <ul class="feature-list list-unstyled mb-4">
-                            <li><i class="bi bi-check-circle"></i> Advanced pipeline</li>
-                            <li><i class="bi bi-check-circle"></i> Broadcast messaging</li>
-                            <li><i class="bi bi-check-circle"></i> Custom deal stages</li>
-                            <li><i class="bi bi-check-circle"></i> Priority support</li>
+                            @foreach($plan->features as $feature)
+                            <li><i class="bi bi-check-circle"></i> {{ $feature }}</li>
+                            @endforeach
                         </ul>
+                        @else
+                        <ul class="feature-list list-unstyled mb-4"><li><i class="bi bi-check-circle"></i> All features included</li></ul>
+                        @endif
                         <div class="cta">
-                            <a href="{{ route('register') }}" class="btn btn-choose btn-choose-paid w-100">Choose Plan</a>
+                            <a href="{{ route('register', ['plan_id' => $plan->id]) }}" class="btn btn-choose btn-choose-paid w-100">Choose Plan</a>
                         </div>
                     </article>
                 </div>
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <article class="price-card price-card-paid h-100">
-                        <div class="card-head">
-                            <span class="badge-title">Business</span>
-                            <div class="price-wrap price-wrap-paid">
-                                <span class="price price-monthly"><span class="price-currency">₹</span><span class="price-value">999</span><span class="period">/month</span></span>
-                            </div>
-                            <h3 class="title">Built for teams, agencies & growing organizations.</h3>
-                            <p class="subtitle">Everything you need at scale.</p>
-                        </div>
-                        <ul class="feature-list list-unstyled mb-4">
-                            <li><i class="bi bi-check-circle"></i> Everything in Pro</li>
-                            <li><i class="bi bi-check-circle"></i> Team member access</li>
-                            <li><i class="bi bi-check-circle"></i> Role-based permissions</li>
-                            <li><i class="bi bi-check-circle"></i> Advanced analytics & reports</li>
-                            <li><i class="bi bi-check-circle"></i> Dedicated support</li>
-                        </ul>
-                        <div class="cta">
-                            <a href="{{ route('register') }}" class="btn btn-choose btn-choose-paid w-100">Choose Plan</a>
-                        </div>
-                    </article>
-                </div>
+                @endforeach
             </div>
+            @endif
             <p class="text-center small text-muted mt-4 mb-0">No credit card required • Cancel anytime</p>
             <p class="text-center small text-muted mt-1 mb-0">WhatsApp conversation charges apply as per Meta pricing. No long-term contracts.</p>
         </div>

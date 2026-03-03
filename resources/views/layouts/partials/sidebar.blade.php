@@ -22,7 +22,7 @@
                 <a href="{{ route('organizations.index') }}" class="nav-link"><i data-feather="briefcase"></i><span>Organizations</span></a>
             </li>
             <li class="dropdown {{ request()->routeIs('plans.*') ? 'active' : '' }}">
-                <a href="{{ route('plans.index') }}" class="nav-link"><i data-feather="package"></i><span>Plans</span></a>
+                <a href="{{ route('plans.index') }}" class="nav-link"><i data-feather="package"></i><span>Plan Management</span></a>
             </li>
             <li class="dropdown {{ request()->routeIs('subscriptions.*') ? 'active' : '' }}">
                 <a href="{{ route('subscriptions.index') }}" class="nav-link"><i data-feather="credit-card"></i><span>Subscriptions</span></a>

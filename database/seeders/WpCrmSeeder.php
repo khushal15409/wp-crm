@@ -61,13 +61,52 @@ class WpCrmSeeder extends Seeder
         }
 
         $plans = [
-            ['name' => 'Basic', 'slug' => 'basic', 'price' => 19, 'interval' => 'month', 'lead_limit' => 1000, 'broadcast_limit' => 100],
-            ['name' => 'Pro', 'slug' => 'pro', 'price' => 49, 'interval' => 'month', 'lead_limit' => 5000, 'broadcast_limit' => 500],
-            ['name' => 'Premium', 'slug' => 'premium', 'price' => 99, 'interval' => 'month', 'lead_limit' => null, 'broadcast_limit' => null],
+            [
+                'name' => 'Starter',
+                'slug' => 'starter',
+                'description' => 'Best for solo professionals getting started with WhatsApp leads.',
+                'price' => 299,
+                'price_monthly' => 299,
+                'interval' => 'month',
+                'lead_limit' => 300,
+                'broadcast_limit' => 50,
+                'features' => ['CRM inbox & pipeline', 'Follow-up reminders', 'Notes & activity history', 'Email support'],
+                'is_active' => true,
+                'is_popular' => false,
+                'trial_days' => 7,
+            ],
+            [
+                'name' => 'Pro',
+                'slug' => 'pro',
+                'description' => 'Ideal for active sales agents and service-based teams.',
+                'price' => 599,
+                'price_monthly' => 599,
+                'interval' => 'month',
+                'lead_limit' => null,
+                'broadcast_limit' => null,
+                'features' => ['Advanced pipeline', 'Broadcast messaging', 'Custom deal stages', 'Priority support'],
+                'is_active' => true,
+                'is_popular' => true,
+                'trial_days' => 7,
+            ],
+            [
+                'name' => 'Business',
+                'slug' => 'business',
+                'description' => 'Built for teams, agencies & growing organizations.',
+                'price' => 999,
+                'price_monthly' => 999,
+                'interval' => 'month',
+                'lead_limit' => null,
+                'broadcast_limit' => null,
+                'features' => ['Everything in Pro', 'Team member access', 'Role-based permissions', 'Advanced analytics & reports', 'Dedicated support'],
+                'is_active' => true,
+                'is_popular' => false,
+                'trial_days' => 7,
+            ],
         ];
 
         foreach ($plans as $p) {
-            Plan::firstOrCreate(
+            Plan::updateOrCreate(
                 ['slug' => $p['slug']],
                 array_merge($p, ['is_active' => true])
             );

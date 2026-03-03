@@ -20,6 +20,9 @@
         @endif
         <form method="POST" action="{{ route('register') }}">
             @csrf
+            @if(request('plan_id'))
+            <input type="hidden" name="plan_id" value="{{ request('plan_id') }}">
+            @endif
             <div class="form-group">
                 <label for="organization_name">Organization Name</label>
                 <input id="organization_name" type="text" class="form-control" name="organization_name" value="{{ old('organization_name') }}" placeholder="Your company or brand name" required>
