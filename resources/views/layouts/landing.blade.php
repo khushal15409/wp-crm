@@ -98,8 +98,8 @@
 
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container position-relative d-flex align-items-center justify-content-between">
-            <a href="{{ url('/') }}" class="logo d-flex align-items-center me-auto me-xl-0" style="max-width: 240px;">
-                <img src="{{ asset('front/images/logo.png') }}" alt="{{ config('app.name', 'WP-CRM') }}" style="width: auto; height: 52px; max-height: 56px; object-fit: contain;">
+            <a href="{{ url('/') }}" class="logo d-flex align-items-center me-auto me-xl-0" style="max-width: 560px;">
+                <img src="{{ asset('front/images/logo.png') }}" alt="{{ config('app.name', 'WP-CRM') }}" style="width: auto; height: 128px; max-height: 144px; object-fit: contain;">
             </a>
 
             <nav id="navmenu" class="navmenu">
@@ -130,8 +130,8 @@
         <div class="container footer-top">
             <div class="row gy-4">
                 <div class="col-lg-5 col-md-12 footer-about">
-                    <a href="{{ url('/') }}" class="logo d-flex align-items-center" style="max-width: 260px;">
-                        <img src="{{ asset('front/images/logo.png') }}" alt="{{ config('app.name', 'WP-CRM') }}" style="width: auto; height: 64px; max-height: 72px; object-fit: contain;">
+                    <a href="{{ url('/') }}" class="logo d-flex align-items-center" style="max-width: 600px;">
+                        <img src="{{ asset('front/images/logo.png') }}" alt="{{ config('app.name', 'WP-CRM') }}" style="width: auto; height: 144px; max-height: 160px; object-fit: contain;">
                     </a>
                     <p>WhatsApp CRM for Real Estate & Sales. Manage leads, pipelines, and follow-ups in one place.</p>
                     <div class="social-links d-flex mt-4">

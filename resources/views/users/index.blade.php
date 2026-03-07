@@ -39,6 +39,9 @@
 $(function() {
     if ($('#users-table tbody tr').length && !$('#users-table tbody tr').first().find('.crm-datatable-empty').length) {
         $('#users-table').DataTable({
+            lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+            searching: true,
+            lengthChange: true,
             order: [[0, 'asc']],
             pageLength: 25
         });

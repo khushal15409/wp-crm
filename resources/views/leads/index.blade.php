@@ -69,6 +69,9 @@
 $(function() {
     if ($('#leads-table tbody tr').length && !$('#leads-table tbody tr').first().find('.crm-datatable-empty').length) {
         $('#leads-table').DataTable({
+            lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+            searching: true,
+            lengthChange: true,
             order: [[-2, 'desc']],
             pageLength: 25,
             columnDefs: [{ orderable: false, searchable: false, targets: -1 }]

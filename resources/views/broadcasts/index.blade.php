@@ -40,6 +40,9 @@
 $(function() {
     if ($('#broadcasts-table tbody tr').length && !$('#broadcasts-table tbody tr').first().find('.crm-datatable-empty').length) {
         $('#broadcasts-table').DataTable({
+            lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+            searching: true,
+            lengthChange: true,
             order: [[0, 'asc']],
             pageLength: 25,
             columnDefs: [{ orderable: false, searchable: false, targets: -1 }]

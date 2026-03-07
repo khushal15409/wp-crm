@@ -28,7 +28,7 @@ class WpCrmSeeder extends Seeder
                 'organization_id' => null,
             ]
         );
-        if (! $superAdmin->hasRole('super_admin')) {
+        if (!$superAdmin->hasRole('super_admin')) {
             $superAdmin->assignRole('super_admin');
         }
 
@@ -55,7 +55,7 @@ class WpCrmSeeder extends Seeder
                     'organization_id' => $org->id,
                 ]
             );
-            if (! $user->hasRole('organization')) {
+            if (!$user->hasRole('organization')) {
                 $user->assignRole('organization');
             }
         }
