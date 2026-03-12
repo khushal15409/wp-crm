@@ -28,6 +28,25 @@
             <!-- Main Content -->
             <div class="main-content">
                 <section class="section">
+                    <div class="page-header d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
+                        <div class="page-title-wrap">
+                            <h1 class="page-title mb-1">@yield('page_title', trim($__env->yieldContent('title', 'Dashboard')))</h1>
+                            @hasSection('page_subtitle')
+                                <p class="page-subtitle mb-0">@yield('page_subtitle')</p>
+                            @endif
+                        </div>
+                        @hasSection('page_actions')
+                            <div class="page-actions mt-3 mt-md-0">
+                                @yield('page_actions')
+                            </div>
+                        @endif
+                    </div>
+                    @if(session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+                    @if(session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
                     @yield('content')
                 </section>
                 @include('layouts.partials.settings-sidebar')

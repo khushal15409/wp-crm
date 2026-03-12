@@ -12,7 +12,12 @@ class LeadController extends Controller
 {
     public function index(Request $request): View
     {
-        $query = Lead::with('organization');
+        $query = Lead::with([
+            'organization',
+            'followUps' => function ($q) {
+                $q->where('status', 'pending')->orderBy('due_at');
+            },
+        ]);
 
         if (auth()->user()->hasRole('organization')) {
             $query->where('organization_id', auth()->user()->organization_id);
@@ -28,6 +33,15 @@ class LeadController extends Controller
                     ->orWhere('name', 'like', "%{$s}%")
                     ->orWhere('email', 'like', "%{$s}%");
             });
+        }
+        if ($request->filled('source')) {
+            $query->where('source', $request->source);
+        }
+        if ($request->filled('start_date')) {
+            $query->whereDate('created_at', '>=', $request->start_date);
+        }
+        if ($request->filled('end_date')) {
+            $query->whereDate('created_at', '<=', $request->end_date);
         }
 
         $leads = $query->latest()->limit(5000)->get();

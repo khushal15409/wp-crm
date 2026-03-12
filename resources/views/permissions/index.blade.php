@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Permissions')
+@section('page_subtitle', 'Review system permissions by group.')
 @section('content')
 <div class="row">
     <div class="col-12">

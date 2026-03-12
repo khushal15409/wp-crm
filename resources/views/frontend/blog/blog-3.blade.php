@@ -2,6 +2,7 @@
 
 @section('meta_title', 'WhatsApp CRM vs Excel | Sales Comparison')
 @section('meta_description', 'Still using Excel for leads? Discover why WhatsApp CRM is better for managing sales and follow-ups.')
+@section('meta_og_type', 'article')
 
 @push('styles')
 <style>

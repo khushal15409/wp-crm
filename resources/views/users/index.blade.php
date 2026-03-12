@@ -1,14 +1,15 @@
 @extends('layouts.app')
 @section('title', 'Users')
+@section('page_subtitle', 'Manage team access, roles, and organizations.')
+@section('page_actions')
+    <a href="{{ route('users.create') }}" class="btn btn-primary">Add User</a>
+@endsection
 @section('content')
 <div class="row">
     <div class="col-12">
         <div class="card crm-datatable-card">
             <div class="card-header">
                 <h4>Users</h4>
-                <div class="card-header-actions">
-                    <a href="{{ route('users.create') }}" class="btn btn-primary">Add User</a>
-                </div>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">

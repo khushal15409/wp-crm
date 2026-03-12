@@ -1,7 +1,7 @@
 @extends('layouts.landing')
 
-@section('meta_title', 'WhatsApp CRM for Real Estate & Sales | WhatsAppLeadCRM')
-@section('meta_description', 'WhatsAppLeadCRM is a WhatsApp CRM for real estate and sales teams to manage WhatsApp leads, pipeline, and follow-ups in one simple WhatsApp sales CRM.')
+@section('meta_title', 'WhatsApp CRM for Sales Teams | Features & Pricing')
+@section('meta_description', 'WhatsApp CRM for sales teams to capture leads, manage follow-ups, and track deals. See features, pricing, and how WP-CRM helps you close more deals.')
 
 @section('content')
     <!-- Hero Section -->
@@ -10,12 +10,12 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right" data-aos-delay="200">
                     <div class="hero-content">
-                        <h1 class="hero-title">WhatsApp CRM Built to Close More Deals</h1>
-                        <p class="hero-description">Manage WhatsApp leads, pipelines, and follow-ups in one powerful
-                            WhatsApp CRM. Built for sales-driven teams and growing businesses who want faster conversions.
-                        </p>
+                        <h1 class="hero-title">WhatsApp CRM for Sales Teams</h1>
+                        <p class="hero-description">Capture leads automatically, manage follow-ups, and track your sales
+                            pipeline in one simple WhatsApp CRM.</p>
                         <div class="hero-actions">
-                            <a href="{{ route('register') }}" class="btn-primary">Get Started Free</a>
+                            <a href="{{ route('register') }}" class="btn-primary">Start 7-Day Free Trial</a>
+                            <a href="#features" class="btn-secondary ms-3">View Features</a>
                             <!-- <a href="#about" class="btn-secondary">
                                                 <i class="bi bi-play-circle"></i>
                                                 <span>Watch Demo</span>
@@ -57,6 +57,124 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Demo Section -->
+    <section id="demo" class="section">
+        <div class="container section-title" data-aos="fade-up">
+            <span class="description-title">Product Demo</span>
+            <h2>See How WP-CRM Works</h2>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row align-items-center gy-4">
+                <div class="col-lg-6">
+                    <div class="ratio ratio-16x9 rounded overflow-hidden shadow-sm">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                            title="WP-CRM Product Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="content-wrapper">
+                        <p class="lead-text mb-3">Watch a quick walkthrough to see how WP-CRM captures, organizes, and
+                            converts WhatsApp leads.</p>
+                        <ul class="feature-list list-unstyled mb-4">
+                            <li><i class="bi bi-check-circle"></i> Capture WhatsApp leads automatically</li>
+                            <li><i class="bi bi-check-circle"></i> Track deals in a visual pipeline</li>
+                            <li><i class="bi bi-check-circle"></i> Never miss a follow-up</li>
+                        </ul>
+                        <a href="{{ route('register') }}" class="btn btn-cta">Start Your Free Trial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problems" class="section light-background">
+        <div class="container section-title" data-aos="fade-up">
+            <span class="description-title">Problems</span>
+            <h2>Why Sales Teams Lose WhatsApp Leads</h2>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row gy-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon">
+                            <i class="bi bi-chat-dots"></i>
+                        </div>
+                        <h5>Messages get buried</h5>
+                        <p>Leads disappear inside busy WhatsApp chats with no visibility.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon">
+                            <i class="bi bi-alarm"></i>
+                        </div>
+                        <h5>Missed follow-ups</h5>
+                        <p>No reminders means hot leads go cold before a reply.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon">
+                            <i class="bi bi-journal-text"></i>
+                        </div>
+                        <h5>No organized tracking</h5>
+                        <p>Spreadsheets and notes make it hard to see deal status.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon">
+                            <i class="bi bi-graph-down"></i>
+                        </div>
+                        <h5>Lost opportunities</h5>
+                        <p>Without a pipeline, teams can’t prioritize or close on time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section">
+        <div class="container section-title" data-aos="fade-up">
+            <span class="description-title">How It Works</span>
+            <h2>How It Works</h2>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row gy-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon">
+                            <i class="bi bi-link-45deg"></i>
+                        </div>
+                        <h5>1. Connect your WhatsApp</h5>
+                        <p>Link your WhatsApp Business number in minutes and sync conversations.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon">
+                            <i class="bi bi-inbox"></i>
+                        </div>
+                        <h5>2. Capture and organize leads automatically</h5>
+                        <p>Every enquiry becomes a lead with notes, owner, and full history.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h5>3. Track deals and close faster</h5>
+                        <p>Move leads through stages, set reminders, and win more deals.</p>
                     </div>
                 </div>
             </div>
@@ -180,11 +298,65 @@
         </div>
     </section>
 
+    <!-- Feature Highlights Section -->
+    <section id="feature-highlights" class="section light-background">
+        <div class="container section-title" data-aos="fade-up">
+            <span class="description-title">Highlights</span>
+            <h2>Features</h2>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row gy-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon"><i class="bi bi-inbox"></i></div>
+                        <h5>WhatsApp Lead Inbox</h5>
+                        <p>Centralize every WhatsApp enquiry in one organized inbox.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon"><i class="bi bi-kanban"></i></div>
+                        <h5>Sales Pipeline</h5>
+                        <p>Visual stages make it easy to see what’s next for each lead.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon"><i class="bi bi-bell"></i></div>
+                        <h5>Follow-up Reminders</h5>
+                        <p>Automatic reminders ensure no lead is forgotten or delayed.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon"><i class="bi bi-broadcast"></i></div>
+                        <h5>Broadcast Messaging</h5>
+                        <p>Reach many leads at once with targeted WhatsApp campaigns.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon"><i class="bi bi-people"></i></div>
+                        <h5>Team Collaboration</h5>
+                        <p>Assign leads, add notes, and keep everyone accountable.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon"><i class="bi bi-graph-up"></i></div>
+                        <h5>CRM Analytics</h5>
+                        <p>Track conversions, team performance, and pipeline health.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Features Section -->
     <section id="features" class="features section">
         <div class="container section-title" data-aos="fade-up">
             <span class="description-title">Features</span>
-            <h2>WhatsApp CRM Features to Close More Deals</h2>
+            <h2>Features</h2>
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="tabs-wrapper">
@@ -381,6 +553,53 @@
         </div>
     </section>
 
+    <!-- Trust & Credibility Section -->
+    <section id="trust" class="section light-background">
+        <div class="container section-title" data-aos="fade-up">
+            <span class="description-title">Trust</span>
+            <h2>Trusted by Sales Professionals</h2>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row gy-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon"><i class="bi bi-cloud-check"></i></div>
+                        <h5>Secure cloud infrastructure</h5>
+                        <p>Reliable hosting with enterprise-grade safeguards.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon"><i class="bi bi-whatsapp"></i></div>
+                        <h5>WhatsApp Cloud API integration</h5>
+                        <p>Official WhatsApp connectivity for consistent delivery.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon"><i class="bi bi-shield-lock"></i></div>
+                        <h5>Data encryption</h5>
+                        <p>Protects sensitive customer and sales information.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon"><i class="bi bi-arrow-repeat"></i></div>
+                        <h5>Regular backups</h5>
+                        <p>Recovery-ready data protection to prevent loss.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box h-100">
+                        <div class="feature-icon"><i class="bi bi-activity"></i></div>
+                        <h5>99.9% uptime</h5>
+                        <p>Always-on access so teams can respond fast.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Trust Section (Stats) -->
     <section id="stats" class="stats section">
         <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -440,7 +659,7 @@
     <section id="pricing" class="pricing section">
         <div class="container section-title" data-aos="fade-up">
             <span class="description-title">Pricing</span>
-            <h2>Simple Pricing for Teams of All Sizes</h2>
+            <h2>Pricing</h2>
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <!-- Free Trial Banner (single card; trial days from plans) -->
@@ -449,7 +668,7 @@
                     <article class="price-card price-card-free-trial">
                         <div class="card-head">
                             <h3 class="title">Start Free for {{ $trialDays }} Days</h3>
-                            <p class="subtitle">Try WP-CRM with full features before you pay anything.</p>
+                            <p class="subtitle">Try the full WhatsApp CRM with no credit card required.</p>
                         </div>
                         <div class="free-trial-under">
                             <ul class="feature-list list-unstyled">
@@ -510,8 +729,66 @@
                         </div>
                     @endforeach
                 </div>
+
+                @php
+                    $formatLimit = function ($value) {
+                        if (is_null($value)) return 'Unlimited';
+                        return (int) $value === 0 ? '0' : number_format((int) $value);
+                    };
+                    $featureHas = function ($plan, array $keywords) {
+                        $features = is_array($plan->features) ? $plan->features : [];
+                        $haystack = strtolower(implode(' ', $features));
+                        foreach ($keywords as $keyword) {
+                            if (str_contains($haystack, strtolower($keyword))) return true;
+                        }
+                        return false;
+                    };
+                @endphp
+
+                <div class="row justify-content-center mt-4">
+                    <div class="col-12" data-aos="fade-up" data-aos-delay="150">
+                        <div class="table-responsive">
+                            <table class="table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Plan Comparison</th>
+                                        @foreach($activePlans as $plan)
+                                            <th scope="col">{{ $plan->name }}</th>
+                                        @endforeach
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Lead limit</th>
+                                        @foreach($activePlans as $plan)
+                                            <td>{{ $formatLimit($plan->lead_limit) }}</td>
+                                        @endforeach
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Broadcast limit</th>
+                                        @foreach($activePlans as $plan)
+                                            <td>{{ $formatLimit($plan->broadcast_limit) }}</td>
+                                        @endforeach
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Team members</th>
+                                        @foreach($activePlans as $plan)
+                                            <td>{{ $featureHas($plan, ['team', 'collaboration', 'users', 'members']) ? 'Included' : '—' }}</td>
+                                        @endforeach
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Analytics access</th>
+                                        @foreach($activePlans as $plan)
+                                            <td>{{ $featureHas($plan, ['analytics', 'reports', 'insights']) ? 'Included' : '—' }}</td>
+                                        @endforeach
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             @endif
-            <p class="text-center small text-muted mt-4 mb-0">No credit card required • Cancel anytime</p>
+            <p class="text-center small text-muted mt-4 mb-0">No credit card required • Cancel anytime • Secure payments</p>
             <p class="text-center small text-muted mt-1 mb-0">WhatsApp conversation charges apply as per Meta pricing. No
                 long-term contracts.</p>
         </div>
@@ -521,8 +798,8 @@
     <section id="contact" class="contact faq-section section light-background">
         <div class="container section-title" data-aos="fade-up">
             <span class="description-title">FAQ</span>
-            <h2>Have Questions? Let’s Talk.</h2>
-            <p>Common questions about WP-CRM and WhatsApp lead management.</p>
+            <h2>Frequently Asked Questions</h2>
+            <p>Quick answers about WhatsApp CRM and getting started.</p>
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="row justify-content-center">
@@ -532,14 +809,13 @@
                             <h3 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
-                                    What is WP-CRM?
+                                    What is WhatsApp CRM?
                                 </button>
                             </h3>
                             <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    WP-CRM is a WhatsApp-focused CRM that helps sales teams and businesses manage leads,
-                                    pipelines, and follow-ups in one place. You can track conversations, set reminders, and
-                                    close more deals without switching between apps.
+                                    A WhatsApp CRM organizes your WhatsApp leads, conversations, and sales pipeline in one
+                                    place. WP-CRM helps teams capture enquiries, set reminders, and close deals faster.
                                 </div>
                             </div>
                         </div>
@@ -547,14 +823,13 @@
                             <h3 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
-                                    How does the 7-day free trial work?
+                                    Is there a free trial?
                                 </button>
                             </h3>
                             <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    Sign up and get full access to WP-CRM for 7 days. No credit card is required. You can
-                                    use all features—leads, pipeline, follow-ups, and more. After the trial, choose a plan
-                                    that fits your business or cancel anytime.
+                                    Yes. Start a 7-day free trial with full access. No credit card required, and you can
+                                    cancel anytime.
                                 </div>
                             </div>
                         </div>
@@ -562,14 +837,13 @@
                             <h3 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
-                                    Do I need a WhatsApp Business account?
+                                    Do I need WhatsApp Business API?
                                 </button>
                             </h3>
                             <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    Yes. WP-CRM works with WhatsApp Business API or Business app. You connect your WhatsApp
-                                    number to sync leads and conversations. We guide you through the setup so you can start
-                                    managing leads quickly.
+                                    WP-CRM works with WhatsApp Business (including API). We guide you to connect the right
+                                    option for your business.
                                 </div>
                             </div>
                         </div>
@@ -577,16 +851,12 @@
                             <h3 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
-                                    What’s included in the Starter, Pro, and Business plans?
+                                    Can I upgrade later?
                                 </button>
                             </h3>
                             <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    <strong>Starter</strong> (₹299/month): Up to 300 WhatsApp leads, lead inbox, basic
-                                    pipeline, follow-up reminders, notes, and email support. <strong>Pro</strong>
-                                    (₹599/month): Unlimited leads, advanced pipeline, broadcast messaging, custom deal
-                                    stages, and priority support. <strong>Business</strong> (₹999/month): Everything in Pro
-                                    plus team access, role-based permissions, advanced analytics, and dedicated support.
+                                    Yes. You can upgrade or downgrade anytime to match your team size and usage.
                                 </div>
                             </div>
                         </div>
@@ -594,38 +864,21 @@
                             <h3 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
-                                    Can I cancel or change my plan later?
+                                    Is my data secure?
                                 </button>
                             </h3>
                             <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    Yes. You can upgrade or downgrade your plan at any time. If you cancel, you keep access
-                                    until the end of your billing period. There are no long-term contracts—you stay in
-                                    control.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
-                                    How do I get started?
-                                </button>
-                            </h3>
-                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <a href="{{ route('register') }}">Register</a> for a free account to start your 7-day
-                                    trial. Once you’re in, connect your WhatsApp number and start adding leads. Need help?
-                                    Use the in-app support or <a href="{{ route('login') }}">log in</a> to your dashboard
-                                    for guides.
+                                    Yes. We use secure infrastructure and protect data with industry-standard safeguards.
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <p class="text-center mt-4 mb-0">Still have questions? <a href="{{ route('register') }}">Get started free</a> or
-                reach out to our support.</p>
+            <h2 class="visually-hidden">Blog</h2>
+            <p class="text-center mt-4 mb-0">Still have questions? <a href="{{ route('register') }}">Get started free</a>,
+                <a href="{{ url('/blog') }}">read our blog</a>, or reach out to our support.</p>
         </div>
     </section>
 

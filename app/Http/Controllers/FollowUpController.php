@@ -12,18 +12,23 @@ class FollowUpController extends Controller
 {
     public function index(Request $request): View
     {
-        $query = FollowUp::with(['lead', 'organization', 'user']);
+        $baseQuery = FollowUp::with(['lead', 'organization', 'user']);
 
         if (auth()->user()->hasRole('organization')) {
-            $query->where('organization_id', auth()->user()->organization_id);
+            $baseQuery->where('organization_id', auth()->user()->organization_id);
         }
 
         if ($request->filled('status')) {
-            $query->where('status', $request->status);
+            $baseQuery->where('status', $request->status);
         }
 
-        $followUps = $query->where('due_at', '>=', now()->startOfDay())->orderBy('due_at')->limit(5000)->get();
-        return view('follow-ups.index', compact('followUps'));
+        $today = now()->startOfDay();
+        $todayFollowUps = (clone $baseQuery)->whereDate('due_at', $today)->orderBy('due_at')->get();
+        $upcomingFollowUps = (clone $baseQuery)->where('due_at', '>', $today)->orderBy('due_at')->get();
+        $overdueFollowUps = (clone $baseQuery)->where('due_at', '<', $today)->where('status', '!=', 'done')->orderBy('due_at')->get();
+
+        $followUps = (clone $baseQuery)->orderBy('due_at')->limit(5000)->get();
+        return view('follow-ups.index', compact('followUps', 'todayFollowUps', 'upcomingFollowUps', 'overdueFollowUps'));
     }
 
     public function create(): View

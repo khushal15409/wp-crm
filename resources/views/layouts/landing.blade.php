@@ -11,7 +11,8 @@
         $pageTitle = trim($__env->yieldContent('meta_title')) ?: $defaultTitle;
         $pageDescription = trim($__env->yieldContent('meta_description')) ?: $defaultDescription;
         $canonicalUrl = url()->current();
-        $socialImage = asset('front/images/landify/illustration/illustration-15.webp');
+        $socialImage = trim($__env->yieldContent('meta_og_image')) ?: asset('front/images/landify/illustration/illustration-15.webp');
+        $socialType = trim($__env->yieldContent('meta_og_type')) ?: 'website';
     @endphp
 
     <title>{{ $pageTitle }}</title>
@@ -23,7 +24,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="{{ $pageTitle }}">
     <meta property="og:description" content="{{ $pageDescription }}">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{{ $socialType }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
     <meta property="og:image" content="{{ $socialImage }}">
 

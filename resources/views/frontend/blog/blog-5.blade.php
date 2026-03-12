@@ -2,6 +2,7 @@
 
 @section('meta_title', 'Best WhatsApp CRM in India (2025)')
 @section('meta_description', 'Looking for the best WhatsApp CRM in India? See why WP-CRM is built for Indian sales teams.')
+@section('meta_og_type', 'article')
 
 @push('styles')
 <style>

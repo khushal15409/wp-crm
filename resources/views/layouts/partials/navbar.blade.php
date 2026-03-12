@@ -4,8 +4,33 @@
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg collapse-btn"> <i data-feather="align-justify"></i></a></li>
             <li><a href="#" class="nav-link nav-link-lg fullscreen-btn"><i data-feather="maximize"></i></a></li>
         </ul>
+        <form class="form-inline mr-auto" action="{{ route('leads.index') }}" method="GET">
+            <div class="search-element">
+                <input class="form-control" type="search" name="search" placeholder="Search leads, contacts, phone..." aria-label="Search">
+                <button class="btn" type="submit"><i data-feather="search"></i></button>
+            </div>
+        </form>
     </div>
     <ul class="navbar-nav navbar-right">
+        @php
+            $authUser = auth()->user();
+            $orgName = $authUser && $authUser->organization ? $authUser->organization->name : 'All Organizations';
+            $isSuperAdmin = $authUser && $authUser->hasRole('super_admin');
+        @endphp
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user nav-org-switcher">
+                <i data-feather="briefcase"></i>
+                <span class="d-none d-lg-inline-block ml-1">{{ $orgName }}</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right pullDown">
+                <div class="dropdown-title">Organization</div>
+                @if($isSuperAdmin)
+                    <a href="{{ route('organizations.index') }}" class="dropdown-item has-icon"><i class="fas fa-building"></i> Manage Organizations</a>
+                @else
+                    <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon"><i class="far fa-building"></i> Organization Settings</a>
+                @endif
+            </div>
+        </li>
         <li class="dropdown dropdown-list-toggle">
             <a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle"><i data-feather="mail"></i><span class="badge headerBadge1">6</span></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
@@ -48,6 +73,11 @@
             <div class="dropdown-menu dropdown-menu-right pullDown">
                 <div class="dropdown-title">Hello {{ optional(auth()->user())->name ?? 'User' }}</div>
                 <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon"><i class="far fa-user"></i> Profile</a>
+                @if($isSuperAdmin)
+                    <a href="{{ route('settings.index') }}" class="dropdown-item has-icon"><i class="fas fa-cog"></i> Settings</a>
+                @else
+                    <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon"><i class="fas fa-cog"></i> Settings</a>
+                @endif
                 <a href="{{ route('profile.edit') }}#password" class="dropdown-item has-icon"><i class="fas fa-key"></i> Change Password</a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item has-icon text-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Logout</a>

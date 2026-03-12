@@ -2,6 +2,7 @@
 
 @section('meta_title', 'What Is WhatsApp CRM? Complete Guide | WP-CRM')
 @section('meta_description', 'Learn what WhatsApp CRM is, how it works, and why sales teams use it to manage leads and pipelines.')
+@section('meta_og_type', 'article')
 
 @push('styles')
 <style>

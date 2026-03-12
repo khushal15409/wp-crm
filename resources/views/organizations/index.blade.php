@@ -1,14 +1,15 @@
 @extends('layouts.app')
 @section('title', 'Organizations')
+@section('page_subtitle', 'Manage organizations and account access.')
+@section('page_actions')
+    <a href="{{ route('organizations.create') }}" class="btn btn-primary">Add Organization</a>
+@endsection
 @section('content')
 <div class="row">
     <div class="col-12">
         <div class="card crm-datatable-card">
             <div class="card-header">
                 <h4>Organizations</h4>
-                <div class="card-header-actions">
-                    <a href="{{ route('organizations.create') }}" class="btn btn-primary">Add Organization</a>
-                </div>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">

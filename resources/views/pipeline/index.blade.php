@@ -1,27 +1,31 @@
 @extends('layouts.app')
 @section('title', 'Pipeline')
+@section('page_subtitle', 'Visualize deal stages and move leads across your sales workflow.')
 @section('content')
-<div class="row">
+<div class="pipeline-board">
     @foreach($stages as $stage)
-    <div class="col-lg-2 col-md-4 col-sm-6">
-        <div class="card">
-            <div class="card-header">
-                <h6 class="text-uppercase">{{ str_replace('_', ' ', $stage) }}</h6>
+        <div class="pipeline-column">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <h6 class="text-uppercase mb-0">{{ str_replace('_', ' ', $stage) }}</h6>
+                <span class="badge badge-light">{{ is_countable($byStage[$stage] ?? []) ? count($byStage[$stage] ?? []) : 0 }}</span>
             </div>
-            <div class="card-body p-2">
-                @foreach($byStage[$stage] ?? [] as $lead)
-                <div class="border rounded p-2 mb-2 small">
-                    <strong>{{ $lead->name ?? $lead->phone }}</strong><br>
-                    <span class="text-muted">{{ $lead->phone }}</span><br>
-                    <a href="{{ route('leads.show', $lead) }}" class="btn btn-sm btn-outline-primary mt-1">View</a>
+            @foreach($byStage[$stage] ?? [] as $lead)
+                <div class="pipeline-card">
+                    <div class="font-weight-600">{{ $lead->name ?? $lead->phone }}</div>
+                    <div class="lead-meta">{{ $lead->phone }}</div>
+                    <div class="lead-meta">Deal value: —</div>
+                    <div class="lead-meta">Next follow-up: —</div>
+                    <div class="mt-2 pipeline-actions">
+                        <a href="{{ route('leads.show', $lead) }}" class="btn btn-sm btn-outline-primary">View</a>
+                        <a href="{{ route('leads.edit', $lead) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                        <a href="{{ route('follow-ups.create') }}" class="btn btn-sm btn-outline-info">Follow-up</a>
+                    </div>
                 </div>
-                @endforeach
-                @if(empty($byStage[$stage]) || (is_countable($byStage[$stage]) ? count($byStage[$stage]) : 0) === 0)
+            @endforeach
+            @if(empty($byStage[$stage]) || (is_countable($byStage[$stage]) ? count($byStage[$stage]) : 0) === 0)
                 <p class="text-muted small mb-0">No leads</p>
-                @endif
-            </div>
+            @endif
         </div>
-    </div>
     @endforeach
 </div>
 @endsection

@@ -21,9 +21,43 @@
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>{{ url('/blog') }}</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>{{ url('/blog/real-estate-whatsapp-leads') }}</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>{{ url('/blog/what-is-whatsapp-crm') }}</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>{{ url('/blog/whatsapp-crm-vs-excel') }}</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>{{ url('/blog/convert-whatsapp-leads') }}</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>{{ url('/blog/best-whatsapp-crm-india') }}</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>{{ url('/blog/follow-up-automation-sales') }}</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>{{ url('/#contact') }}</loc>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 </urlset>
-

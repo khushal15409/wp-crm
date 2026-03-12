@@ -2,6 +2,7 @@
 
 @section('meta_title', 'How to Convert More WhatsApp Leads | WP-CRM')
 @section('meta_description', 'Learn proven strategies to convert WhatsApp leads faster using pipelines and follow-up automation.')
+@section('meta_og_type', 'article')
 
 @push('styles')
 <style>

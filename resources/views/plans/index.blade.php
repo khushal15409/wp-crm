@@ -1,17 +1,15 @@
 @extends('layouts.app')
 @section('title', 'Plan Management')
+@section('page_subtitle', 'Manage pricing tiers and trial settings.')
+@section('page_actions')
+    <a href="{{ route('plans.create') }}" class="btn btn-primary">Add Plan</a>
+@endsection
 @section('content')
 <div class="row">
     <div class="col-12">
-        @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
         <div class="card crm-datatable-card">
             <div class="card-header">
                 <h4>Plan Management</h4>
-                <div class="card-header-actions">
-                    <a href="{{ route('plans.create') }}" class="btn btn-primary">Add Plan</a>
-                </div>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">

@@ -39,6 +39,7 @@
     <!-- Blog Listing -->
     <section class="blog-listing section pt-0">
         <div class="container">
+            <h2 class="visually-hidden">Blog</h2>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
                     <article class="blog-card p-4">

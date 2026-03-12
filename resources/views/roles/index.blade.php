@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Roles')
+@section('page_subtitle', 'View role assignments and access levels.')
 @section('content')
 <div class="row">
     <div class="col-12">

@@ -2,6 +2,7 @@
 
 @section('meta_title', 'How Follow-Up Automation Increases Sales')
 @section('meta_description', 'Discover how follow-up automation helps sales teams close 40% more deals.')
+@section('meta_og_type', 'article')
 
 @push('styles')
 <style>

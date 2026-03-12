@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Subscriptions')
+@section('page_subtitle', 'Track billing status and active trials.')
 @section('content')
 <div class="row">
     <div class="col-12">

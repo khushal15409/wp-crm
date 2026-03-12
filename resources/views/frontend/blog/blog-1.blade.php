@@ -2,6 +2,7 @@
 
 @section('meta_title', 'Why Real Estate Agents Lose Leads on WhatsApp | WP-CRM')
 @section('meta_description', 'Real estate agents lose up to 40% leads due to missed WhatsApp follow-ups. Learn how WhatsApp CRM solves this problem.')
+@section('meta_og_type', 'article')
 
 @push('styles')
 <style>
