@@ -1,0 +1,440 @@
+/* Dashboard — modern SaaS CRM (Organization + Super Admin) */
+/* Sky blue theme: #0EA5E9, #38BDF8, #2563EB | Background: #F1F5F9 */
+
+.dashboard-page {
+  background: #F1F5F9;
+  margin: 0 -24px;
+  padding: 0 24px 24px;
+  border-radius: 16px;
+}
+
+.dashboard-page .section {
+  margin-bottom: 32px;
+}
+
+/* —— Row / section spacing —— */
+.dashboard-page .dashboard-row {
+  margin-bottom: 32px;
+}
+
+.dashboard-page .dashboard-row:last-child {
+  margin-bottom: 0;
+}
+
+/* —— Metric cards: mostly white with subtle accent, 16px radius, soft shadow, hover lift —— */
+.dashboard-page .dashboard-metric-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  padding: 24px 24px 20px;
+  height: 100%;
+  min-height: 130px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dashboard-page .dashboard-metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(14, 165, 233, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-page .dashboard-metric-card .metric-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.dashboard-page .dashboard-metric-card .metric-icon-wrap svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2;
+}
+
+.dashboard-page .dashboard-metric-card .metric-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.dashboard-page .dashboard-metric-card .metric-label {
+  font-size: 0.8rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+/* Metric card icon backgrounds (subtle light highlight accent) */
+.dashboard-page .dashboard-metric-card .metric-icon-wrap {
+  background: rgba(14, 165, 233, 0.08);
+  color: #0EA5E9;
+}
+.dashboard-page .dashboard-metric-card.metric--blue .metric-icon-wrap { background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(56, 189, 248, 0.18)); }
+.dashboard-page .dashboard-metric-card.metric--cyan .metric-icon-wrap { background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(125, 211, 252, 0.24)); }
+.dashboard-page .dashboard-metric-card.metric--green .metric-icon-wrap { background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(74, 222, 128, 0.24)); }
+.dashboard-page .dashboard-metric-card.metric--indigo .metric-icon-wrap { background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(129, 140, 248, 0.24)); }
+.dashboard-page .dashboard-metric-card.metric--amber .metric-icon-wrap { background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(251, 191, 36, 0.24)); }
+
+/* —— Content cards (Recent Leads, Follow-ups, Pipeline, Activity) —— */
+.dashboard-page .dashboard-card {
+  background: #ffffff;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-page .dashboard-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+}
+
+.dashboard-page .dashboard-card .card-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  background: rgba(248, 250, 252, 0.8);
+}
+
+.dashboard-page .dashboard-card .card-header h4,
+.dashboard-page .dashboard-card .card-header h5 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.dashboard-page .dashboard-card .card-body {
+  padding: 24px;
+}
+
+/* —— Table in dashboard —— */
+.dashboard-page .dashboard-card .table {
+  margin: 0;
+}
+
+.dashboard-page .dashboard-card .table thead th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+  font-weight: 600;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 14px 16px;
+  background: rgba(241, 245, 249, 0.8);
+}
+
+.dashboard-page .dashboard-card .table tbody td {
+  padding: 14px 16px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background 0.15s ease;
+}
+
+.dashboard-page .dashboard-card .table tbody tr:hover td {
+  background: rgba(241, 245, 249, 0.8);
+}
+
+.dashboard-page .dashboard-card .table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* —— Pipeline summary (mini stage cards) —— */
+.dashboard-page .pipeline-stage-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-page .pipeline-stage-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.1);
+}
+
+.dashboard-page .pipeline-stage-card .stage-name {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 6px;
+}
+
+.dashboard-page .pipeline-stage-card .stage-count {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.dashboard-page .pipeline-stage-card .stage-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.dashboard-page .pipeline-stage-card .stage-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* —— Follow-up list items —— */
+.dashboard-page .followup-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background 0.15s ease;
+}
+
+.dashboard-page .followup-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.dashboard-page .followup-item:hover {
+  background: rgba(241, 245, 249, 0.6);
+  margin: 0 -12px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.dashboard-page .followup-item .lead-name {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.dashboard-page .followup-item .reminder-time {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.dashboard-page .followup-item .btn-quick {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dashboard-page .followup-item .btn-quick:hover {
+  transform: translateY(-1px);
+}
+
+/* —— Quick action buttons —— */
+.dashboard-page .quick-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, #0EA5E9, #2563EB);
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+  margin-right: 12px;
+  margin-bottom: 10px;
+}
+
+.dashboard-page .quick-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.4);
+  color: #fff;
+}
+
+.dashboard-page .quick-action-btn svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.dashboard-page .quick-action-btn.outline {
+  background: #fff;
+  color: #0EA5E9;
+  border: 2px solid #0EA5E9;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.15);
+}
+
+.dashboard-page .quick-action-btn.outline:hover {
+  background: rgba(14, 165, 233, 0.08);
+  color: #0284c7;
+  border-color: #38BDF8;
+}
+
+/* —— Activity timeline —— */
+.dashboard-page .activity-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.dashboard-page .activity-item:last-child {
+  border-bottom: 0;
+}
+
+.dashboard-page .activity-item:hover {
+  background: rgba(241, 245, 249, 0.5);
+  margin: 0 -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.dashboard-page .activity-item .activity-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #38BDF8;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.dashboard-page .activity-item .activity-title {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.dashboard-page .activity-item .activity-meta {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.dashboard-page .activity-item .activity-time {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* —— System status (Super Admin) —— */
+.dashboard-page .status-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-page .status-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.08);
+}
+
+.dashboard-page .status-card .status-label {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.dashboard-page .status-card .status-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.dashboard-page .status-card .status-value .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+.dashboard-page .status-card .status-value.status-warning .dot { background: #f59e0b; }
+.dashboard-page .status-card .status-value.status-danger .dot { background: #ef4444; }
+
+/* —— Plan performance cards (Super Admin) —— */
+.dashboard-page .plan-perf-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-page .plan-perf-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(14, 165, 233, 0.1);
+}
+
+.dashboard-page .plan-perf-card .plan-name {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.dashboard-page .plan-perf-card .plan-stat {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0EA5E9;
+}
+
+.dashboard-page .plan-perf-card .plan-stat-label {
+  font-size: 0.8rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+/* —— Empty states —— */
+.dashboard-page .dashboard-empty {
+  text-align: center;
+  padding: 32px 24px;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+/* —— DataTables inside dashboard —— */
+.dashboard-page .dataTables_wrapper {
+  padding: 0 24px 24px;
+}
+
+.dashboard-page .dataTables_filter input {
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  padding: 8px 14px;
+}
+
+.dashboard-page .dataTables_filter input:focus {
+  border-color: #0EA5E9;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
+
+.dashboard-page .table-responsive {
+  border-radius: 0 0 16px 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-page .dashboard-metric-card,
+  .dashboard-page .dashboard-card,
+  .dashboard-page .quick-action-btn,
+  .dashboard-page .pipeline-stage-card,
+  .dashboard-page .status-card,
+  .dashboard-page .plan-perf-card {
+    transition: none;
+  }
+  .dashboard-page .dashboard-metric-card:hover,
+  .dashboard-page .quick-action-btn:hover {
+    transform: none;
+  }
+}
