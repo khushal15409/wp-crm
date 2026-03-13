@@ -1,18 +1,18 @@
 /* Modern SaaS palette + typography */
 :root {
   --primary: #0ea5e9;
-  --secondary: #6366f1;
+  --secondary: #2563eb;
   --accent: #22c55e;
   --warning: #f59e0b;
   --danger: #ef4444;
   --bg: #f8fafc;
-  --card: #ffffff;
+  --card: rgba(255, 255, 255, 0.75);
   --border: #e5e7eb;
   --text-primary: #111827;
   --text-secondary: #6b7280;
   --radius: 12px;
   --soft-blue: #e0f2fe;
-  --primary-gradient: linear-gradient(135deg, #38bdf8, #6366f1);
+  --primary-gradient: linear-gradient(135deg, #38bdf8, #2563eb);
 }
 
 body {
@@ -103,16 +103,18 @@ h6,
 
 .card {
   background: var(--card);
-  border: 1px solid var(--border);
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
   margin-bottom: 24px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   animation: fadeInUp 0.35s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.1);
+  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.12);
 }
 
 .card-header {
@@ -134,7 +136,7 @@ h1, h2, h3, h4, h5, h6,
   color: var(--text-secondary);
   font-weight: 600;
   border-bottom: 1px solid var(--border);
-  background: #f1f5f9;
+  background: #e0f2fe;
 }
 
 .table td, .table th {
@@ -261,11 +263,11 @@ h1, h2, h3, h4, h5, h6,
 
 /* Front theme gradient: sidebar and navbar */
 .navbar-bg {
-  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 45%, #6366f1 100%) !important;
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 45%, #2563eb 100%) !important;
 }
 
 .main-navbar {
-  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 45%, #6366f1 100%) !important;
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 45%, #2563eb 100%) !important;
   border: none !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
@@ -350,7 +352,7 @@ h1, h2, h3, h4, h5, h6,
 
 .main-sidebar.sidebar-style-2,
 .main-sidebar {
-  background: linear-gradient(180deg, #0ea5e9 0%, #38bdf8 45%, #6366f1 100%) !important;
+  background: linear-gradient(180deg, #0ea5e9 0%, #38bdf8 45%, #2563eb 100%) !important;
   border-right: none !important;
 }
 
@@ -471,7 +473,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .dataTables_filter input:focus {
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.18);
 }
 
 .dataTables_filter label:before {
@@ -575,8 +577,8 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .metric-card--indigo .metric-icon {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(56, 189, 248, 0.2));
-  color: #6366f1;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(56, 189, 248, 0.2));
+  color: #2563eb;
 }
 
 .metric-card--cyan .metric-icon {
